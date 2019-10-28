@@ -41,7 +41,7 @@
     <view class="heng"></view>
     <view class="shu2"></view>
     <view class="phone">电话：</view>
-    <input class="input_name" placeholder="请填写收件人电话"></input>
+    <input class="input_name" placeholder="请填写收件人"></input>
     <view class="heng"></view>
      <view class="shu3"></view>
     <view class="addr">收货地址：</view>
