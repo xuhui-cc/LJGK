@@ -1,15 +1,23 @@
 //logs.js
-const util = require('../../utils/util.js')
+
 
 Page({
   data: {
-    logs: []
+    currentData: 0,
+    clientHeight: 500,
+    btn_addr: true,
+    showModal_addr: true,
   },
   onLoad: function () {
-    this.setData({
-      logs: (wx.getStorageSync('logs') || []).map(log => {
-        return util.formatTime(new Date(log))
+  },
+  checkCurrent: function (e) {
+    const that = this
+    if (that.data.currentData === e.target.dataset.current) {
+      return false;
+    } else {
+      that.setData({
+        currentData: e.target.dataset.current
       })
-    })
-  }
+    }
+  },
 })

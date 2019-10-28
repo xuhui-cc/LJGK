@@ -1,6 +1,118 @@
-<!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
-  </block>
+
+<view class="container">
+    <view class='top'>
+        <view class='tit'>2019教资考试-中学体育系统精讲</view>
+        <view class='sub_tit'>2019教资考试-中学体育系统精讲</view>
+        <view class='top_con'>
+            <view class='con_img'>
+                <view wx:key="this" class='img_box'>
+                    <image style='width:68rpx;height:68rpx;border-radius:50%;' src="../../images/background.png"></image>
+                    <view class='box_text'>hhh</view>
+                </view>
+            </view>
+            <view class='con_text'>
+                 55人已购买
+            </view>
+        </view>
+    </view>
+    <view class='main_box'>
+         <view class='main_sel'>
+            <view class='tab  {{currentData == 0 ? "tabBorer" : ""}}'  data-current = "0" bindtap='checkCurrent'>介绍</view>
+            <view class='tab  {{currentData == 1 ? "tabBorer" : ""}}'  data-current = "1" bindtap='checkCurrent'>目录</view>
+         </view>
+         <view class='main_con'>
+            <swiper  scroll-y="{{true}}" style="height: {{clientHeight?clientHeight-228 +'px':'auto'}};margin-bottom:140rpx;" current="{{currentData}}" class='swiper'  duration="300" bindchange="bindchange">
+              <swiper-item>
+                  <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight-228+'px':'auto'}}">
+                  <view class='swiper_con'>
+                       <rich-text nodes="{{info.jieshao}}"></rich-text>
+                  </view>
+                  </scroll-view>
+              </swiper-item> 
+              <swiper-item>
+                  <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight-228+'px':'auto'}}">
+                  <view class='swiper_con'>
+                        <view wx:for="{{info.info}}" wx:key="this" class='item'>
+                            <view class='item_cell'>
+                                 <view class='cell_le'>第{{index + 1}}章  {{item.title}}</view>
+                                 <view wx:if="{{item.iszhedie}}" bindtap='zhedie' data-index="{{index}}" class='cell_ri'>
+                                     <image style='width:48rpx;height:48rpx;' src="/images/shou@2x.png"></image>
+                                 </view>
+                                 <view  wx:else bindtap='zhedie' data-index="{{index}}" class='cell_ri dd'>
+                                     <image style='width:48rpx;height:48rpx;' src="/images/shou@2x.png"></image>
+                                 </view>
+                            </view>
+                            <view wx:if="{{item.iszhedie}}" class='subcell_box'>
+                                <view  wx:for="{{item.video_data}}" wx:key="this" wx:for-item="pitem" wx:for-index="pindex"  class='item_subcell'>
+                                  <view class='subcell_le'>
+                                        <view class='text_le'>
+                                            <image style='width:32rpx;height:32rpx;' src="/images/bofang.png"></image>
+                                        </view>
+                                        <view class='text_ri'>
+                                            <view class='ri_tit'>{{pitem.serial_number}} {{pitem.video_title}}</view> 
+                                            <view class='ri_lab'>
+                                                <view class='lab_box'>{{pitem.duration}}分钟</view>
+                                                <view style='display:none;' class='lab_box'>{{pitem.point_count}}知识点</view>
+                                                <view style='display:none;' class='lab_box'>{{pitem.question_count}}练习题</view>
+                                            </view>
+                                        </view>
+                                  </view>
+                                  <view class='subcell_ri'>
+                                      <view wx:if="{{info.is_xcxpay}}" data-lesson_id="{{pitem.id}}" data-system_id="{{pitem.system_id}}" bindtap='gokan_video' class='ri_text'>
+                                          播放
+                                      </view>
+                                      <block wx:else>
+                                          <view wx:if="{{pitem.isfees == 0}}" class='ri_suo'>
+                                              <image class='suo_img'  style='width:24rpx;height:28rpx;' src="/images/749@2x.png"></image>未领取
+                                          </view>
+                                          <view wx:else bindtap='gokan_video'  data-lesson_id="{{pitem.id}}" data-system_id="{{pitem.system_id}}"  class='ri_text'>
+                                              去学习
+                                          </view>
+                                          
+                                      </block>
+                                  </view>
+                              </view>
+                            </view>
+                       </view>
+                       
+                  </view>
+                  </scroll-view>
+              </swiper-item>
+            </swiper>
+         </view>
+    </view>
+    
+<view class='fixbut'>
+   <view class="qlq">去领取</view>
 </view>
+
+
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_addr}}"></view>
+  <view class="layout3" wx:if="{{showModal_addr}}">
+    <image class="addr_bkg" src="../../images/addr_bkg.png"></image>
+    <view class="shu1"></view>
+    <view class="sjr">收件人：</view>
+    <input class="input_name" placeholder="请填写收件人"></input>
+    <view class="heng"></view>
+    <view class="shu2"></view>
+    <view class="phone">电话：</view>
+    <input class="input_name" placeholder="请填写收件人电话"></input>
+    <view class="heng"></view>
+     <view class="shu3"></view>
+    <view class="addr">收货地址：</view>
+    <input class="input_name" placeholder="请填写收件地址"></input>
+    <view class="heng"></view>
+    <view class="tip">注：填写收货地址，免费邮寄考试教材</view>
+    <image class="btn_addr" src="../../images/btn_addr1.png" wx:if='{{!btn_addr}}'></image>
+    <image class="btn_addr" src="../../images/btn_addr2.png" wx:if='{{btn_addr}}'></image>
+    <text class="submit">提交</text>
+
+
+    
+    <image class="del" src="../../images/del.png"></image>
+  </view>
+
+  
+</view>
+
+  

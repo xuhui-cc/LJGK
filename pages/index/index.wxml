@@ -1,13 +1,60 @@
 <!--index.wxml-->
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+
+  <image class="background_img" src="../../images/background.png" ></image>
+  <image class="gk" src="../../images/gk.png"></image>
+  <view class="gk-title">下午就能用的申论素材</view>
+  <view class="sk-title">申论热点终极密押</view>
+  <image class="sk" src="../../images/sk.png"></image>
+  <view class="layout1">
+    <view class='layout11'>
+      <view class='course_title'>笔试高效备考必修课</view>
+      <view class='course_detail'>42小时学完笔试高频知识点</view>
+      <view style='left:{{index * 70 + 43}}rpx;' class='teach-ico'>
+        <image class="teach-ico-img" src="../../images/background.png" mode="aspectFill" ></image>
+        <view class='teach-name'>hh</view>
+      </view>
+    </view>
+    <view class="layout12" bindtap="showModal_addr">
+      <text class="pro_price">原价:￥499</text>
+      <image class="btn_lq" src="../../images/btn_lq1.png" wx:if='{{!btn1}}'></image>
+      <image class="btn_lq" src="../../images/btn_lq2.png" wx:if='{{btn1}}'></image>
+      <view class="lq">免费领取</view>
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_num}}"></view>
+  <view class="layout2" wx:if="{{showModal_num}}" >
+    <view class="layout21" wx:for='{{cs}}' wx:key="{{index}}">
+      <image class="kuang" src="../../images/kuang.png"></image>
+      <view class="num">{{item}}</view>
+    </view>
+    <image class="del" src="../../images/del.png" bindtap="del_num"></image>
   </view>
+
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_addr}}"></view>
+  <view class="layout3" wx:if="{{showModal_addr}}">
+    <image class="addr_bkg" src="../../images/addr_bkg.png"></image>
+    <view class="shu1"></view>
+    <view class="sjr">收件人：</view>
+    <input class="input_name" placeholder="请填写收件人"></input>
+    <view class="heng"></view>
+    <view class="shu2"></view>
+    <view class="phone">电话：</view>
+    <input class="input_name" placeholder="请填写收件人电话"></input>
+    <view class="heng"></view>
+     <view class="shu3"></view>
+    <view class="addr">收货地址：</view>
+    <input class="input_name" placeholder="请填写收件地址"></input>
+    <view class="heng"></view>
+    <view class="tip">注：填写收货地址，免费邮寄考试教材</view>
+    <image class="btn_addr" src="../../images/btn_addr1.png" wx:if='{{!btn_addr}}'></image>
+    <image class="btn_addr" src="../../images/btn_addr2.png" wx:if='{{btn_addr}}'></image>
+    <text class="submit">提交</text>
+
+
+    
+    <image class="del" src="../../images/del.png" bindtap="del_addr"></image>
+  </view>
+  
 </view>
