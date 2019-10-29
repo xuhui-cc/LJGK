@@ -81,10 +81,24 @@
             </swiper>
          </view>
     </view>
-    
-<view class='fixbut'>
+
+
+  <view wx:if='{{!ispay}}'>
+    <view class='fixbut' wx:if='{{!islogin}}' bindtap="showModal_login">
+      <view class="qlq">去领取</view>
+    </view>
+  </view>    
+
+  <view wx:if='{{!ispay}}'>
+    <view class='fixbut' wx:if='{{islogin}}' bindtap="showModal_addr">
+      <view class="qlq">去领取</view>
+    </view>
+  </view>    
+
+
+<!-- <view class='fixbut' wx:elif='{{!ispay}}&&{{islogin}}' bindtap="showModal_addr">
    <view class="qlq">去领取</view>
-</view>
+</view> -->
 
 
 <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_addr}}"></view>
@@ -105,13 +119,40 @@
     <view class="tip">注：填写收货地址，免费邮寄考试教材</view>
     <image class="btn_addr" src="../../images/btn_addr1.png" wx:if='{{!btn_addr}}'></image>
     <image class="btn_addr" src="../../images/btn_addr2.png" wx:if='{{btn_addr}}'></image>
-    <text class="submit">提交</text>
+    <text class="submit" bindtap="submit">提交</text>
 
 
     
-    <image class="del" src="../../images/del.png"></image>
+    <image class="del" src="../../images/del.png" bindtap="del_addr"></image>
   </view>
 
+   <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_login}}"></view>
+  <view class="dl_modalDlg" wx:if="{{showModal_login}}">
+      <image class="dl_close" bindtap="del_login" src="../../images/cha.png"/>
+      <view class="way1">
+        <view class="shu"></view>
+        <text class="bang">绑定手机号登录:</text>
+      </view>
+      
+      <input class="srcall" bindinput="inputphone" placeholder="请输入手机号"></input>
+      <view class="heng_dl"></view>
+      <view class="yz">
+        <input class="sryzm" bindinput="inputcode" placeholder="请输入验证码"></input>
+        <text class="hqyzm" bindtap="getYzm">{{time}}{{suffix}}</text>
+      </view>
+      <view class="heng_dl"></view>
+      <view class="save" bindtap="login">
+        <text class="bc">登录</text>
+      </view>
+      
+      <text class="wx_tip">—— 或授权微信绑定的手机号登录 ——</text>
+      
+      <button class="wxlogin" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        <image class="wxlogin_img" src="../../images/wxlogin.png" mode="aspectFill"/>
+        <text class="wxlogin_dl">登录</text>
+      </button>
+      
+  </view>
   
 </view>
 

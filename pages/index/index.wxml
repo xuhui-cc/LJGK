@@ -3,11 +3,15 @@
 
   <image class="background_img" src="../../images/background.png" ></image>
   <image class="gk" src="../../images/gk.png"></image>
-  <view class="gk-title">下午就能用的申论素材</view>
-  <view class="sk-title">申论热点终极密押</view>
+  <view class="pdf" wx:if='{{islogin}}' bindtap="showModal_num" data-type='{{1}}'></view>
+  <view class="pdf" wx:else="" bindtap="showModal_login" data-type='{{1}}'></view>
+  <view class="video" wx:if='{{islogin}}' bindtap="showModal_num" data-type='{{2}}'></view>
+  <view class="video" wx:else="" bindtap="showModal_login" data-type='{{2}}'></view>
+  <view class="gk-title" bindtap="showModal_login">下午就能用的申论素材</view>
+  <view class="sk-title" bindtap="showModal_login">申论热点终极密押</view>
   <image class="sk" src="../../images/sk.png"></image>
   <view class="layout1">
-    <view class='layout11'>
+    <view class='layout11' bindtap="go_logs">
       <view class='course_title'>笔试高效备考必修课</view>
       <view class='course_detail'>42小时学完笔试高频知识点</view>
       <view style='left:{{index * 70 + 43}}rpx;' class='teach-ico'>
@@ -25,9 +29,9 @@
 
   <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_num}}"></view>
   <view class="layout2" wx:if="{{showModal_num}}" >
-    <view class="layout21" wx:for='{{cs}}' wx:key="{{index}}">
-      <image class="kuang" src="../../images/kuang.png"></image>
-      <view class="num">{{item}}</view>
+    <view class="layout21" wx:for='{{cs}}' wx:key="{{index}}" wx:for-index="xb">
+      <image class="kuang" src="../../images/kuang.png" data-xb='{{xb}}' bindtap="choose"></image>
+      <view class="num" data-xb='{{xb}}' bindtap="choose">{{item}}</view>
     </view>
     <image class="del" src="../../images/del.png" bindtap="del_num"></image>
   </view>
@@ -50,11 +54,38 @@
     <view class="tip">注：填写收货地址，免费邮寄考试教材</view>
     <image class="btn_addr" src="../../images/btn_addr1.png" wx:if='{{!btn_addr}}'></image>
     <image class="btn_addr" src="../../images/btn_addr2.png" wx:if='{{btn_addr}}'></image>
-    <text class="submit">提交</text>
+    <text class="submit" bindtap="submit">提交</text>
 
-
-    
     <image class="del" src="../../images/del.png" bindtap="del_addr"></image>
   </view>
   
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_login}}"></view>
+  <view class="dl_modalDlg" wx:if="{{showModal_login}}">
+      <image class="dl_close" bindtap="del_login" src="../../images/cha.png"/>
+      <view class="way1">
+        <view class="shu"></view>
+        <text class="bang">绑定手机号登录:</text>
+      </view>
+      
+      <input class="srcall" bindinput="inputphone" placeholder="请输入手机号"></input>
+      <view class="heng_dl"></view>
+      <view class="yz">
+        <input class="sryzm" bindinput="inputcode" placeholder="请输入验证码"></input>
+        <text class="hqyzm" bindtap="getYzm">{{time}}{{suffix}}</text>
+      </view>
+      <view class="heng_dl"></view>
+      <view class="save" bindtap="login">
+        <text class="bc">登录</text>
+      </view>
+      
+      <text class="wx_tip">—— 或授权微信绑定的手机号登录 ——</text>
+      
+      <button class="wxlogin" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+        <image class="wxlogin_img" src="../../images/wxlogin.png" mode="aspectFill"/>
+        <text class="wxlogin_dl">登录</text>
+      </button>
+      
+  </view>
+
+  <button open-type='share'>分享好友</button>
 </view>
