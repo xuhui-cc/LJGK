@@ -1,7 +1,56 @@
 /**index.wxss**/
 .background_img{
   width:750rpx;
-  height:1500rpx;
+  height:1450rpx;
+}
+.share{
+  position: fixed;
+  left: -14.5rpx;
+  bottom: -13rpx;
+  width:780rpx;
+  height:120rpx;
+}
+.btn_share{
+  position: fixed;
+  display: flex;
+  left: -14.5rpx;
+  bottom: -13rpx;
+  width:780rpx;
+  height:120rpx;
+}
+.btn_share::after{
+  border: none;
+}
+.share_tip{
+  margin-left: 110rpx;
+  width:280rpx;
+  height:100rpx;
+  font-size:40rpx;
+  font-family:PingFang SC;
+  font-weight:bold;
+  line-height:100rpx;
+  color:rgba(29,161,134,1);
+  opacity:1;
+}
+.share_btn{
+  margin-top: 22.5rpx;
+  margin-left: 90rpx;
+  width: 159rpx;
+  height: 60rpx;
+}
+.mss{
+  position: absolute;
+  margin-left: 510rpx;
+  margin-top: 35rpx;
+  width:72rpx;
+  height:33rpx;
+  font-size:24rpx;
+  font-family:PingFang SC;
+  font-weight:400;
+  line-height:33rpx;
+  color:rgba(255,255,255,1);
+  opacity:1;
+
 }
 .gk{
   position: absolute;

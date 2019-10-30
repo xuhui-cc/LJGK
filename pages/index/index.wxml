@@ -29,9 +29,9 @@
 
   <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_num}}"></view>
   <view class="layout2" wx:if="{{showModal_num}}" >
-    <view class="layout21" wx:for='{{cs}}' wx:key="{{index}}" wx:for-index="xb">
+    <view class="layout21" wx:for='{{kclist}}' wx:key="{{index}}" wx:for-index="xb">
       <image class="kuang" src="../../images/kuang.png" data-xb='{{xb}}' bindtap="choose"></image>
-      <view class="num" data-xb='{{xb}}' bindtap="choose">{{item}}</view>
+      <view class="num" data-xb='{{xb}}' bindtap="choose">{{item.bh}}</view>
     </view>
     <image class="del" src="../../images/del.png" bindtap="del_num"></image>
   </view>
@@ -41,15 +41,15 @@
     <image class="addr_bkg" src="../../images/addr_bkg.png"></image>
     <view class="shu1"></view>
     <view class="sjr">收件人：</view>
-    <input class="input_name" placeholder="请填写收件人"></input>
+    <input class="input_name" placeholder="请填写收件人" bindinput="input_name"></input>
     <view class="heng"></view>
     <view class="shu2"></view>
     <view class="phone">电话：</view>
-    <input class="input_name" placeholder="请填写收件人"></input>
+    <input class="input_name" placeholder="请填写收件人" bindinput="input_phone"></input>
     <view class="heng"></view>
      <view class="shu3"></view>
     <view class="addr">收货地址：</view>
-    <input class="input_name" placeholder="请填写收件地址"></input>
+    <input class="input_name" placeholder="请填写收件地址" bindinput="input_address"></input>
     <view class="heng"></view>
     <view class="tip">注：填写收货地址，免费邮寄考试教材</view>
     <image class="btn_addr" src="../../images/btn_addr1.png" wx:if='{{!btn_addr}}'></image>
@@ -87,5 +87,10 @@
       
   </view>
 
-  <button open-type='share'>分享好友</button>
+  <image class="share" src="../../images/share.png"></image>
+  <button class="btn_share" open-type='share'>
+    <view class="share_tip">免费送好友课程</view>
+    <image class="share_btn" src="../../images/share_btn.png"></image>
+    <view class="mss">马上送</view>
+  </button>
 </view>

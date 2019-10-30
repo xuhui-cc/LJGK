@@ -1,17 +1,17 @@
 
 <view class="container">
     <view class='top'>
-        <view class='tit'>2019教资考试-中学体育系统精讲</view>
-        <view class='sub_tit'>2019教资考试-中学体育系统精讲</view>
+        <view class='tit'>{{course.title}}</view>
+        <view class='sub_tit'>{{course.explains}}</view>
         <view class='top_con'>
             <view class='con_img'>
-                <view wx:key="this" class='img_box'>
-                    <image style='width:68rpx;height:68rpx;border-radius:50%;' src="../../images/background.png"></image>
-                    <view class='box_text'>hhh</view>
+                <view wx:for="{{course.teacherlist}}" wx:key="this" class='img_box'>
+                    <image style='width:68rpx;height:68rpx;border-radius:50%;' src="{{item.avatar}}"></image>
+                    <view class='box_text'>{{item.name}}</view>
                 </view>
             </view>
             <view class='con_text'>
-                 55人已购买
+              {{course.buy_count}}人已购买
             </view>
         </view>
     </view>
@@ -25,16 +25,16 @@
               <swiper-item>
                   <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight-228+'px':'auto'}}">
                   <view class='swiper_con'>
-                       <rich-text nodes="{{info.jieshao}}"></rich-text>
+                       <rich-text nodes="{{course.jieshao}}"></rich-text>
                   </view>
                   </scroll-view>
               </swiper-item> 
               <swiper-item>
                   <scroll-view scroll-y="{{true}}" style="height: {{clientHeight?clientHeight-228+'px':'auto'}}">
                   <view class='swiper_con'>
-                        <view wx:for="{{info.info}}" wx:key="this" class='item'>
+                        <view wx:for="{{course.info}}" wx:key="this" class='item'>
                             <view class='item_cell'>
-                                 <view class='cell_le'>第{{index + 1}}章  {{item.title}}</view>
+                                 <view class='cell_le'>第{{index + 1}}章  {{item.chapter_info.title}}</view>
                                  <view wx:if="{{item.iszhedie}}" bindtap='zhedie' data-index="{{index}}" class='cell_ri'>
                                      <image style='width:48rpx;height:48rpx;' src="/images/shou@2x.png"></image>
                                  </view>
@@ -43,7 +43,7 @@
                                  </view>
                             </view>
                             <view wx:if="{{item.iszhedie}}" class='subcell_box'>
-                                <view  wx:for="{{item.video_data}}" wx:key="this" wx:for-item="pitem" wx:for-index="pindex"  class='item_subcell'>
+                                <view  wx:for="{{item.chapter_info.video_data}}" wx:key="this" wx:for-item="pitem" wx:for-index="pindex"  class='item_subcell'>
                                   <view class='subcell_le'>
                                         <view class='text_le'>
                                             <image style='width:32rpx;height:32rpx;' src="/images/bofang.png"></image>
@@ -52,8 +52,6 @@
                                             <view class='ri_tit'>{{pitem.serial_number}} {{pitem.video_title}}</view> 
                                             <view class='ri_lab'>
                                                 <view class='lab_box'>{{pitem.duration}}分钟</view>
-                                                <view style='display:none;' class='lab_box'>{{pitem.point_count}}知识点</view>
-                                                <view style='display:none;' class='lab_box'>{{pitem.question_count}}练习题</view>
                                             </view>
                                         </view>
                                   </view>
@@ -62,7 +60,7 @@
                                           播放
                                       </view>
                                       <block wx:else>
-                                          <view wx:if="{{pitem.isfees == 0}}" class='ri_suo'>
+                                          <view wx:if="{{!ispay}}" class='ri_suo'>
                                               <image class='suo_img'  style='width:24rpx;height:28rpx;' src="/images/749@2x.png"></image>未领取
                                           </view>
                                           <view wx:else bindtap='gokan_video'  data-lesson_id="{{pitem.id}}" data-system_id="{{pitem.system_id}}"  class='ri_text'>

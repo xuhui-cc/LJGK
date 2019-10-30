@@ -1,4 +1,5 @@
 // pages/pdf/pdf.js
+const app = getApp()
 Page({
 
   /**
@@ -12,7 +13,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let that = this
+    var params = {
 
+    }
+    app.ljgk.xcxGetZiliao(params).then(d => {
+      if (d.data.status == 1) {
+        that.setData({
+          gkzl: d.data.data
+        })
+        console.log(that.data.gkzl)
+      }
+    })
   },
 
   /**
