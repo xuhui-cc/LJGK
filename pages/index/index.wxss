@@ -1,7 +1,7 @@
 /**index.wxss**/
 .background_img{
   width:750rpx;
-  height:1450rpx;
+  height:1550rpx;
 }
 .share{
   position: fixed;
@@ -55,7 +55,7 @@
 .gk{
   position: absolute;
   margin-left: 15rpx;
-  margin-top: 10rpx;
+  margin-top: 85rpx;
   width: 720rpx;
   height: 596rpx;
 }
@@ -79,7 +79,7 @@
 .gk-title{
   position: absolute;
   margin-left: 245rpx;
-  margin-top: 200rpx;
+  margin-top: 275rpx;
   width:400rpx;
   height:56rpx;
   font-size:40rpx;
@@ -92,7 +92,7 @@
 .sk-title{
   position: absolute;
   margin-left: 245rpx;
-  margin-top: 445rpx;
+  margin-top: 520rpx;
   width:400rpx;
   height:56rpx;
   font-size:40rpx;
@@ -105,14 +105,14 @@
 .sk{
   position: absolute;
   margin-left: 15rpx;
-  margin-top: 610rpx;
+  margin-top: 685rpx;
   width: 720rpx;
   height: 474.86rpx;
 }
 .layout1{ 
   display:flex;
   position: absolute;
-  margin-top: 640rpx;
+  margin-top: 715rpx;
   overflow: hidden;
 }
 .layout11 {

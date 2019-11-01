@@ -56,14 +56,14 @@
                                         </view>
                                   </view>
                                   <view class='subcell_ri'>
-                                      <view wx:if="{{info.is_xcxpay}}" data-lesson_id="{{pitem.id}}" data-system_id="{{pitem.system_id}}" bindtap='gokan_video' class='ri_text'>
+                                      <view wx:if="{{info.is_xcxpay}}" data-video_id="{{pitem.video_id}}" bindtap='gokan_video' class='ri_text'>
                                           播放
                                       </view>
                                       <block wx:else>
                                           <view wx:if="{{!ispay}}" class='ri_suo'>
                                               <image class='suo_img'  style='width:24rpx;height:28rpx;' src="/images/749@2x.png"></image>未领取
                                           </view>
-                                          <view wx:else bindtap='gokan_video'  data-lesson_id="{{pitem.id}}" data-system_id="{{pitem.system_id}}"  class='ri_text'>
+                                          <view wx:else bindtap='gokan_video'  data-video_id="{{pitem.video_id}}"  class='ri_text'>
                                               去学习
                                           </view>
                                           
@@ -94,25 +94,20 @@
   </view>    
 
 
-<!-- <view class='fixbut' wx:elif='{{!ispay}}&&{{islogin}}' bindtap="showModal_addr">
-   <view class="qlq">去领取</view>
-</view> -->
-
-
 <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_addr}}"></view>
   <view class="layout3" wx:if="{{showModal_addr}}">
     <image class="addr_bkg" src="../../images/addr_bkg.png"></image>
     <view class="shu1"></view>
     <view class="sjr">收件人：</view>
-    <input class="input_name" placeholder="请填写收件人"></input>
+    <input class="input_name" placeholder="请填写收件人" bindinput="input_name"></input>
     <view class="heng"></view>
     <view class="shu2"></view>
     <view class="phone">电话：</view>
-    <input class="input_name" placeholder="请填写收件人电话"></input>
+    <input class="input_name" placeholder="请填写收件人" bindinput="input_phone"></input>
     <view class="heng"></view>
      <view class="shu3"></view>
     <view class="addr">收货地址：</view>
-    <input class="input_name" placeholder="请填写收件地址"></input>
+    <input class="input_name" placeholder="请填写收件地址" bindinput="input_address"></input>
     <view class="heng"></view>
     <view class="tip">注：填写收货地址，免费邮寄考试教材</view>
     <image class="btn_addr" src="../../images/btn_addr1.png" wx:if='{{!btn_addr}}'></image>

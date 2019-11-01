@@ -1,6 +1,8 @@
 <!--index.wxml-->
 <view class="container">
 
+
+
   <image class="background_img" src="../../images/background.png" ></image>
   <image class="gk" src="../../images/gk.png"></image>
   <view class="pdf" wx:if='{{islogin}}' bindtap="showModal_num" data-type='{{1}}'></view>
@@ -19,8 +21,15 @@
         <view class='teach-name'>hh</view>
       </view>
     </view>
-    <view class="layout12" bindtap="showModal_addr">
+    
+    <view class="layout12" wx:if='{{islogin}}' bindtap="showModal_addr" data-type='{{3}}'>
       <text class="pro_price">原价:￥499</text>
+      <image class="btn_lq" src="../../images/btn_lq1.png" wx:if='{{!btn1}}'></image>
+      <image class="btn_lq" src="../../images/btn_lq2.png" wx:if='{{btn1}}'></image>
+      <view class="lq">免费领取</view>
+    </view>
+    <view class="layout12" wx:else='' bindtap="showModal_login" data-type='{{3}}'>
+    <text class="pro_price">原价:￥499</text>
       <image class="btn_lq" src="../../images/btn_lq1.png" wx:if='{{!btn1}}'></image>
       <image class="btn_lq" src="../../images/btn_lq2.png" wx:if='{{btn1}}'></image>
       <view class="lq">免费领取</view>

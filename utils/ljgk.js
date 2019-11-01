@@ -19,6 +19,26 @@ function xcxAddAddress(params) {
 function xcxGetCourseInfo(params) {
   return fetch.ljgkfetch(URI, 'xcxGetCourseInfo', params)
 }
+//获取验证码
+function xcxMyGetyzm(params) {
+  return fetch.ljgkfetch(URI, 'loginSendSMS', params)
+}
+//验证码登录
+function loginRegister(params) {
+  return fetch.ljgkfetch(URI, 'loginRegister', params)
+}
+//微信登录 
+function loginregister(params) {
+  return fetch.ljgkfetch(URI, "xcxljgklogin", params)
+}
+//看视频kan_video 
+function xcxkanVideo(params) {
+  return fetch.ljgkfetch(URI, 'xcxGoStudy', params)
+}
+//断点续播时间节点 
+function xcxsaveStudyRecord(params) {
+  return fetch.ljgkfetch(URI, 'xcxsaveStudyRecord', params)
+}
 
 
-module.exports = { xcxGetKcList, xcxGetZiliao, xcxAddAddress, xcxGetCourseInfo}
+module.exports = { xcxGetKcList, xcxGetZiliao, xcxAddAddress, xcxGetCourseInfo, xcxMyGetyzm, loginRegister, loginregister, xcxkanVideo, xcxsaveStudyRecord}

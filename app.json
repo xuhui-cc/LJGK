@@ -2,13 +2,13 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/pdf/pdf",
-    "pages/video/video"
+    "pages/video/video",
+    "pages/kan_video/kan_video"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "领军公考",
+    
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json"
