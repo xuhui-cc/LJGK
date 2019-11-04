@@ -1,5 +1,5 @@
 <!--pages/video/video.wxml-->
 
-  <video class="video"></video>
+  <video class="video" src='{{gkzl.mp4}}' autoplay='true' controls='true'></video>
 
 

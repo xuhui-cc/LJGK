@@ -114,9 +114,24 @@ Page({
     console.log(this.data.username)
   },
   input_phone: function (e) {
-    this.setData({
-      phone: e.detail.value
-    })
+    var regNum = new RegExp('[0-9]', 'g');
+
+    var isphone = regNum.exec(e.detail.value);
+    if (isphone) {
+      this.setData({
+        phone: e.detail.value
+      })
+    }
+    else {
+      wx.showToast({
+        title: "请输入正确的手机号码",
+        icon: 'none',
+        duration: 1000
+      })
+      this.setData({
+        phone: ""
+      })
+    }
     console.log(this.data.phone)
   },
   input_address: function (e) {
@@ -130,6 +145,7 @@ Page({
     let that = this
     var uid = wx.getStorageSync("uid")
     console.log(uid)
+    if (that.data.phone != "" && that.data.phone.length == 11) {
     var params = {
       uid: uid,
       username: that.data.username,
@@ -156,6 +172,13 @@ Page({
         console.log(d.data.msg)
       }
     })
+    } else {
+      wx.showToast({
+        title: "请输入正确的手机号码",
+        icon: 'none',
+        duration: 1000
+      })
+    }
 
 
 

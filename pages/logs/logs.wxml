@@ -51,6 +51,7 @@
                                         <view class='text_ri'>
                                             <view class='ri_tit'>{{pitem.serial_number}} {{pitem.video_title}}</view> 
                                             <view class='ri_lab'>
+                                             
                                                 <view class='lab_box'>{{pitem.duration}}分钟</view>
                                             </view>
                                         </view>
