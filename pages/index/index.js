@@ -36,6 +36,21 @@ Page({
         console.log(that.data.kclist)
       }
     })
+
+    var params = {
+
+    }
+    app.ljgk.xcxGetCourseInfo(params).then(r => {
+
+      if (r.data.status == 1) {
+        that.setData({
+          course_detail: r.data.data
+        })
+      }
+      else {
+
+      }
+    })
   },
   
   //免费领取按钮判断

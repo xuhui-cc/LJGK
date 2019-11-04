@@ -9,16 +9,18 @@
   <view class="pdf" wx:else="" bindtap="showModal_login" data-type='{{1}}'></view>
   <view class="video" wx:if='{{islogin}}' bindtap="showModal_num" data-type='{{2}}'></view>
   <view class="video" wx:else="" bindtap="showModal_login" data-type='{{2}}'></view>
-  <view class="gk-title" bindtap="showModal_login">下午就能用的申论素材</view>
-  <view class="sk-title" bindtap="showModal_login">申论热点终极密押</view>
+  <view class="gk-title" wx:if='{{islogin}}' bindtap="showModal_num" data-type='{{1}}'>下午就能用的申论素材</view>
+  <view class="gk-title" wx:else="" bindtap="showModal_login" data-type='{{1}}'>下午就能用的申论素材</view>
+  <view class="sk-title" wx:if='{{islogin}}' bindtap="showModal_num" data-type='{{2}}'>申论热点终极密押</view>
+  <view class="sk-title" wx:else="" bindtap="showModal_login" data-type='{{2}}'>申论热点终极密押</view>
   <image class="sk" src="../../images/sk.png"></image>
   <view class="layout1">
     <view class='layout11' bindtap="go_logs">
-      <view class='course_title'>笔试高效备考必修课</view>
-      <view class='course_detail'>42小时学完笔试高频知识点</view>
-      <view style='left:{{index * 70 + 43}}rpx;' class='teach-ico'>
-        <image class="teach-ico-img" src="../../images/background.png" mode="aspectFill" ></image>
-        <view class='teach-name'>hh</view>
+      <view class='course_title'>{{course_detail.title}}</view>
+      <view class='course_detail'>{{course_detail.explains}}</view>
+      <view style='left:{{index * 70 + 43}}rpx;' class='teach-ico' wx:for="{{course_detail.teacherlist}}" wx:key="this">
+        <image class="teach-ico-img" src="{{item.avatar}}" mode="aspectFill" ></image>
+        <view class='teach-name'>{{item.name}}</view>
       </view>
     </view>
     
