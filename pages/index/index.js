@@ -364,6 +364,13 @@ Page({
 //获取微信绑定手机号
   getPhoneNumber: function (e) {
     var that = this
+    //单微信获取测试
+    var type = e.currentTarget.dataset.type;
+    console.log(type + 'type')
+    that.setData({
+      type: type
+    })
+    //单微信获取测试结束
     wx.login({
       success: res => {
 
@@ -416,9 +423,12 @@ Page({
     })
   },
 
+  
+
   //获取验证码
   getYzm: function (e) {
     var that = this
+    
     // var token = wx.getStorageSync('token');
     var phone = this.data.dphone;
     if (this.data.disabled || !phone) {

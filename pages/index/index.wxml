@@ -6,13 +6,18 @@
   <image class="background_img" src="../../images/background.png" ></image>
   <image class="gk" src="../../images/gk.png"></image>
   <view class="pdf" wx:if='{{islogin}}' bindtap="showModal_num" data-type='{{1}}'></view>
-  <view class="pdf" wx:else="" bindtap="showModal_login" data-type='{{1}}'></view>
+  <button class='pdf_wxbtn' wx:else="" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type='{{1}}'></button>
+   <!-- <view class="pdf" wx:else="" bindtap="showModal_login" data-type='{{1}}'></view> -->
   <view class="video" wx:if='{{islogin}}' bindtap="showModal_num" data-type='{{2}}'></view>
-  <view class="video" wx:else="" bindtap="showModal_login" data-type='{{2}}'></view>
+  <button class='video_wxbtn' wx:else="" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type='{{2}}'></button>
+   <!-- <view class="video" wx:else="" bindtap="showModal_login" data-type='{{2}}'></view> -->
   <view class="gk-title" wx:if='{{islogin}}' bindtap="showModal_num" data-type='{{1}}'>下午就能用的申论素材</view>
-  <view class="gk-title" wx:else="" bindtap="showModal_login" data-type='{{1}}'>下午就能用的申论素材</view>
+ <button class='gk_wxbtn' wx:else="" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type='{{1}}'>下午就能用的申论素材</button>
+  <!-- <view class="gk-title" wx:else="" bindtap="showModal_login" data-type='{{1}}'>下午就能用的申论素材</view> -->
   <view class="sk-title" wx:if='{{islogin}}' bindtap="showModal_num" data-type='{{2}}'>申论热点终极密押</view>
-  <view class="sk-title" wx:else="" bindtap="showModal_login" data-type='{{2}}'>申论热点终极密押</view>
+  
+  <!-- <view class="sk-title" wx:else="" bindtap="showModal_login" data-type='{{2}}'>申论热点终极密押</view> -->
+  <button class='sk_wxbtn' wx:else="" data-type='{{2}}' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">申论热点终极密押</button>
   <image class="sk" src="../../images/sk.png"></image>
   <view class="layout1">
     <view class='layout11' bindtap="go_logs">
@@ -30,10 +35,12 @@
       <image class="btn_lq" src="../../images/btn_lq2.png" wx:if='{{btn1}}'></image>
       <view class="lq">免费领取</view>
     </view>
-    <view class="layout12" wx:else='' bindtap="showModal_login" data-type='{{3}}'>
+    <!-- <view class="layout12" wx:else='' bindtap="showModal_login" data-type='{{3}}'> -->
+    <view class="layout12" wx:else='' data-type='{{3}}'>
     <text class="pro_price">原价:￥499</text>
       <image class="btn_lq" src="../../images/btn_lq1.png" wx:if='{{!btn1}}'></image>
       <image class="btn_lq" src="../../images/btn_lq2.png" wx:if='{{btn1}}'></image>
+      <button class='lq_wxbtn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>
       <view class="lq">免费领取</view>
     </view>
   </view>

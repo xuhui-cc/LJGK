@@ -83,7 +83,8 @@
 
 
   <view wx:if='{{!ispay}}'>
-    <view class='fixbut' wx:if='{{!islogin}}' bindtap="showModal_login">
+    <view class='fixbut' wx:if='{{!islogin}}' >
+     <button class='xq_wxbtn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>
       <view class="qlq">去领取</view>
     </view>
   </view>    

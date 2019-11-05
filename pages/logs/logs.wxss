@@ -202,6 +202,16 @@ text-align: center;
   background:linear-gradient(90deg,rgba(24,203,166,1) 0%,rgba(119,235,223,1) 100%);
   opacity:1;
 }
+.xq_wxbtn{
+  position: absolute;
+  bottom: 0rpx;
+  width:750rpx;
+  height:105rpx;
+  background: transparent;
+}
+.xq_wxbtn::after {
+  border: none;
+}
 .qlq{
   width:750rpx;
   height:105rpx;
