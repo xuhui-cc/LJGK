@@ -249,33 +249,40 @@ Page({
           wx.showLoading({
             title: '登录中...',
           })
-          let iv = encodeURIComponent(e.detail.iv);
-          let encryptedData = encodeURIComponent(e.detail.encryptedData);
-          let code = res.code
-          var params = {
-            "code": code,
-            "iv": iv,
-            "encryptedData": encryptedData
-          }
-          console.log(params)
-          app.ljgk.loginregister(params).then(d => {
-            if (d.data.status == 0) {
-              wx.setStorageSync('token', d.data.token);
-              wx.setStorageSync('uid', d.data.uid);
-              app.globalData.uid = d.data.uid;
-              wx.setStorageSync('userInfo', d.data.userInfo)
-              
-                that.setData({
-                  showModal_addr: true,
-                  showModal_login: false,
-                  islogin: true
+          wx.login({
+            success(res) {
+              console.log("cccs.code" + res.code)
 
-                })
-                wx.setStorageSync("islogin", this.data.islogin)
-              
-            wx.hideLoading()
+              let iv = encodeURIComponent(e.detail.iv);
+              let encryptedData = encodeURIComponent(e.detail.encryptedData);
+              let code = res.code
+              var params = {
+                "code": code,
+                "iv": iv,
+                "encryptedData": encryptedData
+              }
+              console.log(params)
+              app.ljgk.loginregister(params).then(d => {
+                if (d.data.status == 0) {
+                  wx.setStorageSync('token', d.data.token);
+                  wx.setStorageSync('uid', d.data.uid);
+                  app.globalData.uid = d.data.uid;
+                  wx.setStorageSync('userInfo', d.data.userInfo)
+
+                } else {
+                }
+
+              })
+              wx.hideLoading()
             }
           })
+          that.setData({
+            showModal_addr: true,
+            showModal_login: false,
+            islogin: true
+
+          })
+          wx.setStorageSync("islogin", this.data.islogin)
         } else {
 
         }

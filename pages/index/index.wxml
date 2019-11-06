@@ -59,8 +59,9 @@
       <image class="kc" src="../../images/kc.png" ></image>
       <input class="input_kc" placeholder="请向咨询老师索取关键字" type='number' bindinput="input_kc"></input>
       <image class="btn_kc" src="../../images/btn_addr1.png" wx:if='{{!input_kc}}'></image>
-      <image class="btn_kc" src="../../images/btn_addr2.png" wx:else='' bindtap="kc_submit"></image>
-      <view class="kc_yes" bindtap="kc_submit">确定</view>
+      <view class="kc_yes" wx:if='{{!input_kc}}'>确定</view>
+      <image class="btn_kc" src="../../images/btn_addr2.png" wx:if='{{input_kc}}' bindtap="kc_submit"></image>
+      <view class="kc_yes" wx:if='{{input_kc}}' bindtap="kc_submit">确定</view>
  
     <image class="kc_del" src="../../images/del.png" bindtap="del_num"></image>
   </view>
@@ -74,7 +75,7 @@
     <view class="heng"></view>
     <view class="shu2"></view>
     <view class="phone">电话：</view>
-    <input class="input_name" placeholder="请填写电话"  bindinput="input_phone"></input>
+    <input class="input_name" placeholder="请填写电话" type='number' bindinput="input_phone"></input>
     <view class="heng"></view>
      <view class="shu3"></view>
     <view class="addr">收货地址：</view>
@@ -118,6 +119,7 @@
 
   <image class="share" src="../../images/share.png"></image>
   <button class="btn_share" open-type='share'>
+    <image class="ljlogo" src="../../images/lj.png"></image>
     <view class="share_tip">免费送好友课程</view>
     <image class="share_btn" src="../../images/share_btn.png"></image>
     <view class="mss">马上送</view>

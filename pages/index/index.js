@@ -144,6 +144,10 @@ Page({
         app.ljgk.xcxAddKaochang(params).then(d => {
           if (d.data.status == 1) {
             console.log(d.data.msg)
+            console.log('考场号：' + this.data.kcid)
+          }
+          else {
+            console.log('失败')
           }
         })
 
@@ -188,6 +192,20 @@ Page({
         })
       }
       else {
+        var params = {
+          uid: uid,
+          kcid: this.data.kcid
+        }
+        //获取pdf文件
+        app.ljgk.xcxAddKaochang(params).then(d => {
+          if (d.data.status == 1) {
+            console.log(d.data.msg)
+            console.log('考场号：' + this.data.kcid)
+          }
+          else {
+            console.log('失败')
+          }
+        })
         wx.navigateTo({
           url: '/pages/video/video',
         })
@@ -442,46 +460,59 @@ Page({
           wx.showLoading({
             title: '登录中...',
           })
-          let iv = encodeURIComponent(e.detail.iv);
-          let encryptedData = encodeURIComponent(e.detail.encryptedData);
-          let code = res.code
-          var params = {
-            "code": code,
-            "iv": iv,
-            "encryptedData": encryptedData
-          }
-          console.log(params)
-          app.ljgk.loginregister(params).then(d => {
-            if (d.data.status == 0) {
-              wx.setStorageSync('token', d.data.token);
-              wx.setStorageSync('uid', d.data.uid);
-              app.globalData.uid = d.data.uid;
-              wx.setStorageSync('userInfo', d.data.userInfo)
-              if (this.data.type == 1 || this.data.type == 2) {
-                that.setData({
-                  showModal_num: true,
-                  showModal_login: false,
-                  islogin: true
+          wx.login({
+            success(res) {
+              console.log("cccs.code" + res.code)
 
-                })
-                wx.setStorageSync("islogin", this.data.islogin)
-              } 
-              else if (this.data.type == 3) {
-                that.setData({
-                  showModal_addr: true,
-                  showModal_login: false,
-                  islogin: true
-
-                })
-                wx.setStorageSync("islogin", this.data.islogin)
+              let iv = encodeURIComponent(e.detail.iv); 
+              let encryptedData = encodeURIComponent(e.detail.encryptedData);
+              let code = res.code
+              var params = {
+                "code": code,
+                "iv": iv,
+                "encryptedData": encryptedData
               }
-            } else {
-
-            }
-            wx.hideLoading()
+              console.log(params)
+              app.ljgk.loginregister(params).then(d => {
+                if (d.data.status == 0) {
+                  wx.setStorageSync('token', d.data.token);
+                  wx.setStorageSync('uid', d.data.uid);
+                  app.globalData.uid = d.data.uid;
+                  wx.setStorageSync('userInfo', d.data.userInfo)
+                  
+                } else {
+                  // wx.showToast({
+                  //   title: "登陆失败",
+                  //   icon: 'none',
+                  //   duration: 1000
+                  // })
+                  // console.log(d.data.msg)
+                }
+                
+              })
+              wx.hideLoading()
+            } 
           })
+          if (this.data.type == 1 || this.data.type == 2) {
+            that.setData({
+              showModal_num: true,
+              showModal_login: false,
+              islogin: true
+
+            })
+            wx.setStorageSync("islogin", this.data.islogin)
+          }
+          else if (this.data.type == 3) {
+            that.setData({
+              showModal_addr: true,
+              showModal_login: false,
+              islogin: true
+
+            })
+            wx.setStorageSync("islogin", this.data.islogin)
+          }
         } else {
-         
+          wx.hideLoading()
         }
       }
     })

@@ -22,7 +22,7 @@
   border: none;
 }
 .share_tip{
-  margin-left: 110rpx;
+  margin-left: 140rpx;
   width:280rpx;
   height:100rpx;
   font-size:40rpx;
@@ -32,15 +32,21 @@
   color:rgba(29,161,134,1);
   opacity:1;
 }
+.ljlogo{
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+  width: 80rpx;
+  height: 88rpx;
+}
 .share_btn{
   margin-top: 22.5rpx;
-  margin-left: 90rpx;
+  margin-left: 50rpx;
   width: 159rpx;
   height: 60rpx;
 }
 .mss{
   position: absolute;
-  margin-left: 510rpx;
+  margin-left: 590rpx;
   margin-top: 35rpx;
   width:72rpx;
   height:33rpx;
