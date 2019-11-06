@@ -46,12 +46,23 @@
   </view>
 
   <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_num}}"></view>
-  <view class="layout2" wx:if="{{showModal_num}}" >
+  <!-- <view class="layout2" wx:if="{{showModal_num}}" >
     <view class="layout21" wx:for='{{kclist}}' wx:key="{{index}}" wx:for-index="xb">
       <image class="kuang" src="../../images/kuang.png" data-xb='{{xb}}' bindtap="choose"></image>
       <view class="num" data-xb='{{xb}}' bindtap="choose">{{item.bh}}</view>
     </view>
     <image class="del" src="../../images/del.png" bindtap="del_num"></image>
+  </view> -->
+
+<view class="layout2" wx:if="{{showModal_num}}" >
+    
+      <image class="kc" src="../../images/kc.png" ></image>
+      <input class="input_kc" placeholder="请向咨询老师索取关键字" type='number' bindinput="input_kc"></input>
+      <image class="btn_kc" src="../../images/btn_addr1.png" wx:if='{{!input_kc}}'></image>
+      <image class="btn_kc" src="../../images/btn_addr2.png" wx:else='' bindtap="kc_submit"></image>
+      <view class="kc_yes" bindtap="kc_submit">确定</view>
+ 
+    <image class="kc_del" src="../../images/del.png" bindtap="del_num"></image>
   </view>
 
   <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_addr}}"></view>

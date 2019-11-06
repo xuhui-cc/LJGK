@@ -12,7 +12,8 @@ Page({
     time: "获取验证码",
     currentTime: 61,
     islogin: false,        //是否登录
-    num:0,      //考场初始判断
+    kc_yes: false,  
+    input_kc: false    //考场初始判断
   },
   //事件处理函数
   
@@ -21,21 +22,21 @@ Page({
     that.setData({
       islogin: wx.getStorageSync("islogin"),
       ispay: wx.getStorageSync("ispay"),
-      num: wx.getStorageSync("num"),
+      kc_yes: wx.getStorageSync("kc_yes"),
     })
     //获取考场信息
-    var params = {
+    // var params = {
      
-    }
-    app.ljgk.xcxGetKcList(params).then(d => {
-      console.log(d)
-      if (d.data.status == 1) {
-        that.setData({
-          kclist:  d.data.data
-        })
-        console.log(that.data.kclist)
-      }
-    })
+    // }
+    // app.ljgk.xcxGetKcList(params).then(d => {
+    //   console.log(d)
+    //   if (d.data.status == 1) {
+    //     that.setData({
+    //       kclist:  d.data.data
+    //     })
+    //     console.log(that.data.kclist)
+    //   }
+    // })
 
     var params = {
 
@@ -53,6 +54,59 @@ Page({
     })
   },
   
+  input_kc: function(e) {
+
+    var regkcid = new RegExp('[0-9]', 'g');
+
+    var iskcid = regkcid.exec(e.detail.value);
+    
+   
+    if (iskcid) {
+      if (e.detail.value >= 1 ){
+        if (e.detail.value <= 150) {
+          this.setData({
+            kcid: e.detail.value,
+            input_kc: true
+          })
+        } else {
+          wx.showToast({
+            title: "请输入正确的关键字",
+            icon: 'none',
+            duration: 1000
+          })
+          this.setData({
+            input_kc: false
+          })
+        }
+      }else{
+        wx.showToast({
+          title: "请输入正确的关键字",
+          icon: 'none',
+          duration: 1000
+        })
+        this.setData({
+          input_kc: false
+        })
+      }
+      
+     
+    }
+    else {
+      wx.showToast({
+        title: "请输入正确的关键字",
+        icon: 'none',
+        duration: 1000
+      })
+      this.setData({
+        kcid: "",
+        input_kc: false
+      })
+    }
+    console.log(this.data.kcid)
+
+    
+    
+  },
   //免费领取按钮判断
   showModal_addr: function() {
     if(this.data.ispay){
@@ -72,66 +126,76 @@ Page({
       showModal_addr: false
     })
   },
-  //考场选择
-  choose: function(e) {
-    var num = e.currentTarget.dataset.xb + 1;
-    console.log(num)
-    this.setData({
-      num : num
-    })
-    wx.setStorageSync('num', this.data.num)
-    if (this.data.type == 1) {
-      var params = {
-
-      }
-      //获取pdf文件
-      app.ljgk.xcxGetZiliao(params).then(d => {
-        if (d.data.status == 1) {
-          this.setData({
-            gkzl: d.data.data,
-
-          })
-          console.log(this.data.gkzl)
+  //考场提交
+  kc_submit: function() {
+   
+      this.setData({
+        kc_yes: true
+      })
+      console.log("考场选择" + this.data.kc_yes)
+      wx.setStorageSync('kc_yes', this.data.kc_yes)
+      var uid = wx.getStorageSync("uid")
+      if (this.data.type == 1) {
+        var params = {
+          uid: uid,
+          kcid: this.data.kcid
         }
-        wx.downloadFile({
-          url: this.data.gkzl.pdf, //仅为示例，并非真实的资源
-          success(res) {
-            // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
-
-
-            var filePath = res.tempFilePath
-
-            wx.openDocument({
-
-              filePath: filePath,
-
-              success: function (res) {
-
-                console.log('打开文档成功')
-
-              }
-
-            })
+        //获取pdf文件
+        app.ljgk.xcxAddKaochang(params).then(d => {
+          if (d.data.status == 1) {
+            console.log(d.data.msg)
           }
-
         })
 
-      })
-      // wx.navigateTo({
-      //   url: '/pages/pdf/pdf',
-      // })
-      this.setData({
-        showModal_num: false
-      })
-    }
-    else {
-      wx.navigateTo({
-        url: '/pages/video/video',
-      })
-      this.setData({
-        showModal_num: false
-      })
-    }
+        app.ljgk.xcxGetZiliao(params).then(d => {
+          if (d.data.status == 1) {
+            this.setData({
+              gkzl: d.data.data,
+
+            })
+            console.log(this.data.gkzl)
+          }
+
+          wx.downloadFile({
+            url: this.data.gkzl.pdf, //仅为示例，并非真实的资源
+            success(res) {
+              // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+
+
+              var filePath = res.tempFilePath
+
+              wx.openDocument({
+
+                filePath: filePath,
+
+                success: function (res) {
+
+                  console.log('打开文档成功')
+
+                }
+
+              })
+            }
+
+          })
+
+        })
+        // wx.navigateTo({
+        //   url: '/pages/pdf/pdf',
+        // })
+        this.setData({
+          showModal_num: false
+        })
+      }
+      else {
+        wx.navigateTo({
+          url: '/pages/video/video',
+        })
+        this.setData({
+          showModal_num: false
+        })
+      }
+    
   },
   //考场选择蒙层判断
   showModal_num: function (e) {
@@ -140,7 +204,7 @@ Page({
     this.setData({
       type:type
     })
-    if(this.data.num > 0){
+    if (this.data.kc_yes){
       if(this.data.type == 1){
         var params = {
 
