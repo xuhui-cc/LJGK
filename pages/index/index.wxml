@@ -40,7 +40,7 @@
     <text class="pro_price">原价:￥499</text>
       <image class="btn_lq" src="../../images/btn_lq1.png" wx:if='{{!btn1}}'></image>
       <image class="btn_lq" src="../../images/btn_lq2.png" wx:if='{{btn1}}'></image>
-      <button class='lq_wxbtn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"></button>
+      <button class='lq_wxbtn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type='{{3}}'></button>
       <view class="lq">免费领取</view>
     </view>
   </view>

@@ -1,4 +1,6 @@
-const URI = 'http://cs.szgk.cn/api.php'
+// const URI = 'http://cs.szgk.cn/api.php'
+
+const URI = 'https://www.szgk.cn/api.php' 
 
 
 const fetch = require('./fetch')
