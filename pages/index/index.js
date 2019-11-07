@@ -54,6 +54,11 @@ Page({
     })
   },
   
+
+  onShow: function () {
+    this.onLoad()
+  },
+
   input_kc: function(e) {
 
     var regkcid = new RegExp('[0-9]', 'g');

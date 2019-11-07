@@ -37,7 +37,7 @@
     </view>
     <!-- <view class="layout12" wx:else='' bindtap="showModal_login" data-type='{{3}}'> -->
     <view class="layout12" wx:else='' data-type='{{3}}'>
-    <text class="pro_price">原价:￥499</text>
+    <text class="pro_price">原价:￥499</text>                                      
       <image class="btn_lq" src="../../images/btn_lq1.png" wx:if='{{!btn1}}'></image>
       <image class="btn_lq" src="../../images/btn_lq2.png" wx:if='{{btn1}}'></image>
       <button class='lq_wxbtn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type='{{3}}'></button>

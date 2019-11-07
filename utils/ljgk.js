@@ -1,6 +1,6 @@
-// const URI = 'http://cs.szgk.cn/api.php'
+const URI = 'http://cs.szgk.cn/api.php'    //测试接口
 
-const URI = 'https://www.szgk.cn/api.php' 
+// const URI = 'https://www.szgk.cn/api.php'    //正式接口
 
 
 const fetch = require('./fetch')
@@ -20,6 +20,10 @@ function xcxAddAddress(params) {
 //省考课程详情
 function xcxGetCourseInfo(params) {
   return fetch.ljgkfetch(URI, 'xcxGetCourseInfo', params)
+}
+//登陆后省考课程详情
+function xcxGetCourseInfo1(params) {
+  return fetch.ljgkfetch(URI, 'xcxGetCourseInfo1', params)
 }
 //获取验证码
 function xcxMyGetyzm(params) {
@@ -43,4 +47,4 @@ function xcxsaveStudyRecord(params) {
 }
 
 
-module.exports = { xcxAddKaochang, xcxGetZiliao, xcxAddAddress, xcxGetCourseInfo, xcxMyGetyzm, loginRegister, loginregister, xcxkanVideo, xcxsaveStudyRecord}
+module.exports = { xcxAddKaochang, xcxGetZiliao, xcxAddAddress, xcxGetCourseInfo, xcxGetCourseInfo1, xcxMyGetyzm, loginRegister, loginregister, xcxkanVideo, xcxsaveStudyRecord}

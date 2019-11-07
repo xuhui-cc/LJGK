@@ -23,30 +23,53 @@ Page({
     let that = this
     let ispay = wx.getStorageSync("ispay")
     let islogin = wx.getStorageSync("islogin")
+    var uid = wx.getStorageSync("uid")
     that.setData({
       ispay : ispay,
-      islogin : islogin
+      islogin : islogin,
+      uid: uid
     })
     console.log(that.data.islogin)
+    console.log(that.data.uid)
 
+  if(that.data.uid > 0 ){
+    var params = {
+      uid:uid
+    }
+    app.ljgk.xcxGetCourseInfo1(params).then(d => {
+
+      if (d.data.status == 1) {
+        that.setData({
+          course: d.data.data
+        })
+        that.zhankai()
+      }
+      else {
+
+      }
+    })
+  }else{
     var params = {
 
     }
     app.ljgk.xcxGetCourseInfo(params).then(d => {
-      
-        if (d.data.status == 1) {
-          that.setData({
-            course: d.data.data
-          })
-          that.zhankai()
+
+      if (d.data.status == 1) {
+        that.setData({
+          course: d.data.data
+        })
+        that.zhankai()
       }
-      else{
-        
+      else {
+
       }
     })
+  }
+    
   },
   onShow: function () {
     if (wx.hideHomeButton) wx.hideHomeButton()
+    this.onLoad()
   },
   //介绍目录页选择
   checkCurrent: function (e) {
@@ -164,6 +187,7 @@ Page({
           showModal_addr: false,
           ispay: true
         })
+        
         wx.setStorageSync("ispay", this.data.ispay)
         that.onLoad()
         console.log(d.data.msg)
@@ -186,6 +210,13 @@ Page({
   },
   //跳转去看视频
   gokan_video: function (e) {
+    // var index = e.currentTarget.dataset.xb
+    // console.log(index)
+    // var cscs = e.currentTarget.dataset.cscs
+    // console.log(cscs)
+
+    
+
     var video_id = e.currentTarget.dataset.video_id
     // var lesson_id = e.currentTarget.dataset.lesson_id
     // console.log(e)

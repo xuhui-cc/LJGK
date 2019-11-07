@@ -190,6 +190,23 @@ color:rgba(25,203,167,1);
 line-height: 40rpx;
 text-align: center;
 }
+.ri_text1{
+width:130rpx;
+height:40rpx;
+background:linear-gradient(90deg,rgba(24,203,166,1) 0%,rgba(119,235,223,1) 100%);
+opacity:1;
+border-radius:40rpx;
+font-size:20rpx;
+font-family:PingFang SC;
+font-weight:400;
+color:rgba(255,255,255,1);
+line-height: 40rpx;
+text-align: center;
+}
+.jt{
+  width: 12rpx;
+  height: 14rpx;
+}
 .ri_img{
   padding-top: 12rpx;
   margin-left: 30rpx;
