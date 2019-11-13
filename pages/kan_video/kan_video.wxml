@@ -1,7 +1,8 @@
 
 
   
-    <video wx:if="{{videoUrl}}" class="video" poster="{{avatar}}" src='{{videoUrl}}' autoplay='true' controls='true' bindtimeupdate='timeUpdate'initial-time="{{last_watch_time}}"></video>
+    <!-- <video wx:if="{{videoUrl}}" class="video" poster="{{avatar}}" src='{{videoUrl}}' autoplay='true' controls='true' bindtimeupdate='timeUpdate' initial-time="{{last_time}}"></video> -->
+<video wx:if="{{videoUrl}}" class="video" poster="{{avatar}}" src='{{videoUrl}}' autoplay='true' controls='true' bindtimeupdate='timeUpdate'initial-time="{{last_time}}"></video>
  
 
   

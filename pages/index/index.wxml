@@ -75,7 +75,7 @@
     <view class="heng"></view>
     <view class="shu2"></view>
     <view class="phone">电话：</view>
-    <input class="input_name" placeholder="请填写电话" type='number' bindinput="input_phone"></input>
+    <input class="input_name" placeholder="请填写电话号码" type='number' bindinput="input_phone"></input>
     <view class="heng"></view>
      <view class="shu3"></view>
     <view class="addr">收货地址：</view>

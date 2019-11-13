@@ -65,11 +65,11 @@
                                               <image class='suo_img'  style='width:24rpx;height:28rpx;' src="/images/749@2x.png"></image>未领取
                                           </view>
                                           <view wx:else>
-                                           <view wx:if='{{!pitem.last_time}}' bindtap='gokan_video'  data-video_id="{{pitem.video_id}}"  class='ri_text' data-xb="{{pindex}}" >
+                                           <view wx:if='{{!pitem.last_time}}' bindtap='gokan_video'  data-video_id="{{pitem.video_id}}"  class='ri_text' data-xb="{{pindex}}" data-last_time="{{pitem.last_time}}" >
                                               去学习
                                           </view>
 
-                                          <view wx:else=''  bindtap='gokan_video'  data-video_id="{{pitem.video_id}}"  class='ri_text1' data-xb="{{pindex}}" >
+                                          <view wx:else=''  bindtap='gokan_video'  data-video_id="{{pitem.video_id}}"  class='ri_text1' data-xb="{{pindex}}" data-last_time="{{pitem.last_time}}" >
                                           <image class="jt" src="/images/jiantou.png"></image>
                                               上次学到
                                           </view>
@@ -113,7 +113,7 @@
     <view class="heng"></view>
     <view class="shu2"></view>
     <view class="phone">电话：</view>
-    <input class="input_name" placeholder="请填写收件人" bindinput="input_phone"></input>
+    <input class="input_name" placeholder="请填写电话号码" type='number' bindinput="input_phone"></input>
     <view class="heng"></view>
      <view class="shu3"></view>
     <view class="addr">收货地址：</view>

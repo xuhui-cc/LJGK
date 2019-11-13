@@ -9,7 +9,7 @@ Page({
     system_id: '',
     lesson_id: '',
     currentTime: 0,
-
+    last_time: 0,
     
 
     videoimage: "block"
@@ -39,24 +39,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.video_id)
+    let that = this
+    console.log(options.video_id + "video_id")
     
     var video = ''
-    this.data.video_id = options.video_id;
+    that.data.video_id = options.video_id;
+    
     
     var uid = wx.getStorageSync('uid');
     var token = wx.getStorageSync('token');
     var params = {
       "uid": uid,
-      "video_id": this.data.video_id,
-      
+      "video_id": that.data.video_id,
     }
     
     app.ljgk.xcxkanVideo(params).then(d => {
       if (d.data.status == 1) {
-        this.setData({ videoUrl: d.data.data.video_url, last_watch_time: d.data.data.last_watch_time })
-
-        console.log(d.data)
+        that.setData({ videoUrl: d.data.data.video_url, last_watch_time: d.data.data.last_watch_time, last_time: options.last_time  })
+        // that.data.last_time = options.last_time;
+        console.log(that.data.videoUrl +"that.data.videoUrl")
+        console.log(that.data.last_watch_time + "that.data.last_watch_time")
       } else {
         
       }
@@ -101,9 +103,9 @@ Page({
     app.ljgk.xcxsaveStudyRecord(params).then(d => {
       if (d.data.status == 1) {
         
-        console.log(d.data.msg)
+        console.log(d.data.msg  +"succeed")
       } else {
-        console.log(d.data.msg)
+        console.log(d.data.msg + "false")
       }
     })
     

@@ -29,8 +29,8 @@ Page({
       islogin : islogin,
       uid: uid
     })
-    console.log(that.data.islogin)
-    console.log(that.data.uid)
+    console.log(that.data.islogin + "ISLOGIN")
+    console.log(that.data.uid + "uid")
 
   if(that.data.uid > 0 ){
     var params = {
@@ -216,14 +216,14 @@ Page({
     // console.log(cscs)
 
     
-
+    var last_time = e.currentTarget.dataset.last_time
     var video_id = e.currentTarget.dataset.video_id
     // var lesson_id = e.currentTarget.dataset.lesson_id
     // console.log(e)
     wx.navigateTo({
-      url: '/pages/kan_video/kan_video?video_id=' + video_id,
+      url: '/pages/kan_video/kan_video?video_id=' + video_id + '&last_time=' + last_time,
     })
-    console.log(video_id)
+    console.log(video_id  + 'video_id')
   },
   inputphone: function (e) {
     this.setData({

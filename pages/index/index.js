@@ -107,7 +107,7 @@ Page({
         input_kc: false
       })
     }
-    console.log(this.data.kcid)
+    console.log(this.data.kcid + 'kcid')
 
     
     
@@ -148,7 +148,7 @@ Page({
         //获取pdf文件
         app.ljgk.xcxAddKaochang(params).then(d => {
           if (d.data.status == 1) {
-            console.log(d.data.msg)
+            console.log(d.data.msg +'msg,addkc')
             console.log('考场号：' + this.data.kcid)
           }
           else {
@@ -162,7 +162,7 @@ Page({
               gkzl: d.data.data,
 
             })
-            console.log(this.data.gkzl)
+            console.log(this.data.gkzl + 'gkzl')
           }
 
           wx.downloadFile({
@@ -204,7 +204,7 @@ Page({
         //获取pdf文件
         app.ljgk.xcxAddKaochang(params).then(d => {
           if (d.data.status == 1) {
-            console.log(d.data.msg)
+            console.log(d.data.msg +'sddkc')
             console.log('考场号：' + this.data.kcid)
           }
           else {
@@ -239,7 +239,7 @@ Page({
               gkzl: d.data.data,
 
             })
-            console.log(this.data.gkzl)
+            console.log(this.data.gkzl +'gkzl')
           }
           wx.downloadFile({
             url: this.data.gkzl.pdf, //仅为示例，并非真实的资源
@@ -325,7 +325,7 @@ Page({
   submit: function () {
     let that = this
     var uid = wx.getStorageSync("uid")
-    console.log(uid)
+    console.log(uid + 'uid')
     if (that.data.phone != "" && that.data.phone.length == 11){
     var params = {
       uid: uid,
