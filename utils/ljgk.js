@@ -1,6 +1,6 @@
-const URI = 'http://cs.szgk.cn/api.php'    //测试接口
+// const URI = 'http://cs.szgk.cn/api.php'    //测试接口
 
-// const URI = 'https://www.szgk.cn/api.php'    //正式接口
+const URI = 'https://www.szgk.cn/api.php'    //正式接口
 
 
 const fetch = require('./fetch')
@@ -45,6 +45,28 @@ function xcxkanVideo(params) {
 function xcxsaveStudyRecord(params) {
   return fetch.ljgkfetch(URI, 'xcxsaveStudyRecord', params)
 }
+//邀请码
+function xcxSaveCode(params) {
+  return fetch.ljgkfetch(URI, 'xcxSaveCode', params)
+}
+//测评信息
+function xcxSaveCeping(params) {
+  return fetch.ljgkfetch(URI, 'xcxSaveCeping', params)
+}
+//面试视频
+function xcxGetVideoList(params) {
+  return fetch.ljgkfetch(URI, 'xcxGetVideoList', params)
+}
+//OPENID
+function xcxGetOpenid(params) {
+  return fetch.ljgkfetch(URI, 'xcxGetOpenid', params)
+}
+//OPENID
+function xcxPushMsg(params) {
+  return fetch.ljgkfetch(URI, 'xcxPushMsg', params)
+}
 
 
-module.exports = { xcxAddKaochang, xcxGetZiliao, xcxAddAddress, xcxGetCourseInfo, xcxGetCourseInfo1, xcxMyGetyzm, loginRegister, loginregister, xcxkanVideo, xcxsaveStudyRecord}
+
+
+module.exports = { xcxAddKaochang, xcxGetZiliao, xcxAddAddress, xcxGetCourseInfo, xcxGetCourseInfo1, xcxMyGetyzm, loginRegister, loginregister, xcxkanVideo, xcxsaveStudyRecord, xcxSaveCeping, xcxSaveCode, xcxGetVideoList, xcxGetOpenid, xcxPushMsg}

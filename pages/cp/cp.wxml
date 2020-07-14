@@ -1,0 +1,80 @@
+<view class="container">
+  <image class="cp_bg" src="../../images/cp_bg.png"></image>
+  <image class="back" src="../../images/back.png" bindtap="back"></image>
+
+  <image class="ftf_img" wx:if='{{isftf}}' src="../../images/xz_cp.png"></image>
+  <image class="ftf_img" wx:else="" src="../../images/wxz_cp.png" bindtap="ftf"></image>
+  <text class="ftf_text" style="{{isftf?'color:rgba(12,193,155,1); ':'color:rgba(188,188,188,1);'}}" bindtap="{{isftf?'; ':'ftf'}}">面对面测评</text>
+   <image class="ptp_img" wx:if='{{isptp}}' src="../../images/xz_cp.png"></image>
+  <image class="ptp_img" wx:else="" src="../../images/wxz_cp.png" bindtap="ftf"></image>
+  <text class="ptp_text" style="{{isptp?'color:rgba(12,193,155,1); ':'color:rgba(188,188,188,1);'}}" bindtap="{{isptp?'; ':'ftf'}}">电话测评</text>
+
+  <view class="shu1"></view>
+  <view class="cp1">考试类型</view>
+  <view class="cp1_content" bindtap="kclx_xl">{{kslx_select}}</view>
+  <image class="cp1_img" src="../../images/xsj.png" bindtap="kclx_xl"></image>
+  <view class="xk_menu"  wx:if="{{kclx_xl}}"> 
+      <!-- scroll-y='true' enable-flex="true" -->
+        <view  wx:for="{{kslx}}" wx:key="index" >
+          <view class="xk_content" bindtap="kslx_select" data-select="{{item}}">{{item}}</view>
+          <view class="xk_heng"></view>
+        </view>
+      </view>
+
+  <view class="shu2"></view>
+  <view class="cp2">报考岗位</view>
+  <input class="cp2_content" placeholder="请填写报考岗位" bindinput="input_gw">{{gw}}</input>
+
+  <view class="shu3"></view>
+  <view class="cp3">联系方式</view>
+  <input class="cp3_content" placeholder="请填写联系方式" bindinput="input_phone">{{phone}}</input>
+
+  <view class="shu4"></view>
+  <text class="cp4">测评时间</text>
+      
+      <picker class="picker" mode="date" value="{{date}}" start="{{now_date}}" end="{{future_date}}" bindchange="bindDateChange">
+        <view class="cp4_content1">{{date}}</view>
+      </picker>
+      <picker class="picker" mode="date" value="{{date}}" start="{{now_date}}" end="{{future_date}}" bindchange="bindDateChange">
+         <image class="cp4_img1" src="../../images/xsj.png"></image>
+      </picker>
+
+      <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{cptime}}">
+        <view class="cp4_content2">{{cp_time}}</view>
+      </picker>
+       <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{cptime}}">
+        <image class="cp4_img2" src="../../images/xsj.png"></image>
+      </picker>
+
+       <image class="btn_sub" src="../../images/btn_addr1.png" wx:if='{{!input_mask2}}'></image>
+      <view class="mask2_yes" wx:if='{{!input_mask2}}' >确定</view>
+      <image class="btn_sub" src="../../images/btn_addr2.png" wx:if='{{input_mask2}}' bindtap="mask2_submit"></image>
+      <view class="mask2_yes" wx:if='{{input_mask2}}' bindtap="mask2_submit">确定</view>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</view>

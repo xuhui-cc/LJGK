@@ -1,0 +1,100 @@
+<!--index.wxml-->
+<view class="container">
+  <image class="background_img" src="../../images/background.png" ></image>
+  <image class="ms" src="../../images/bg_ms.png"></image>
+   <view class="v1" wx:if='{{islogin}}' bindtap="show_mask1" data-type='{{1}}'></view>
+  <button class='v1_wxbtn' wx:else="" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type='{{1}}'></button>
+
+  <view class="v2" wx:if='{{islogin}}' bindtap="show_mask1" data-type='{{2}}'></view>
+  <button class='v2_wxbtn' wx:else="" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type='{{2}}'></button>
+
+  <view class="v3" wx:if='{{islogin}}' bindtap="show_mask1" data-type='{{3}}'></view>
+  <button class='v3_wxbtn' wx:else="" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type='{{3}}'></button>
+
+  <view class="v4" wx:if='{{islogin}}' bindtap="show_mask1" data-type='{{4}}'></view>
+  <button class='v4_wxbtn' wx:else="" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type='{{4}}'></button>
+
+  <view class="v5" wx:if='{{islogin}}' bindtap="show_mask1" data-type='{{5}}'></view>
+  <button class='v5_wxbtn' wx:else="" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type='{{5}}'></button>
+
+ 
+
+
+
+
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{mask1}}"></view>
+  <view class="layout2" wx:if="{{mask1}}" >
+    <image class="mask1" src="../../images/mask1.png" ></image>
+    <input class="input_mask1" placeholder="请输入测评邀请码" type='number' bindinput="input_mask1"></input>
+    <image class="btn_mask1" src="../../images/btn_addr1.png" wx:if='{{!input_mask1}}'></image>
+    <view class="mask1_yes" wx:if='{{!input_mask1}}'>确定</view>
+    <image class="btn_mask1" src="../../images/btn_addr2.png" wx:if='{{input_mask1}}' bindtap="mask1_submit"></image>
+    <view class="mask1_yes" wx:if='{{input_mask1}}' bindtap="mask1_submit">确定</view>
+    <image class="mask1_del" src="../../images/del.png" bindtap="del_mask" data-del="{{1}}"></image>
+  </view>
+
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{mask2}}"></view>
+  <view class="layout3" wx:if="{{mask2}}">
+    <image class="mask2" src="../../images/mask2.png"></image>
+   
+      <image class="ftf" wx:if='{{isftf}}' src="../../images/xz_ftf.png" ></image>
+      <image class="ftf" wx:else='' src="../../images/wxz_ftf.png" bindtap="ftf"></image>
+      <text class="ftf_name" style="{{isftf?'color:rgba(12,193,155,1); ':'color:rgba(188,188,188,1);'}}" bindtap="{{isftf?'; ':'ftf'}}">面对面测评</text>
+
+      <image class="ptp" wx:if='{{isptp}}' src="../../images/xz_ptp.png" ></image>
+      <image class="ptp" wx:else='' src="../../images/wxz_ptp.png" bindtap="ftf"></image>
+      <text class="ptp_name" style="{{isptp?'color:rgba(12,193,155,1); ':'color:rgba(188,188,188,1);'}}" bindtap="{{isptp?'; ':'ftf'}}">电话测评</text>
+
+      <view class="shu1"></view>
+      <text class="cp1">考试类型</text>
+      <view class="cp1_content" bindtap="kclx_xl">{{kslx_select}}</view>
+      <image class="cp1_img" src="../../images/xsj.png" bindtap="kclx_xl"></image>
+      <view class="xk_menu"  wx:if="{{kclx_xl}}"> 
+      <!-- scroll-y='true' enable-flex="true" -->
+        <view  wx:for="{{kslx}}" wx:key="index" >
+          <view class="xk_content" bindtap="kslx_select" data-select="{{item}}">{{item}}</view>
+          <view class="xk_heng"></view>
+        </view>
+      </view>
+      <view class="shu2"></view>
+      <text class="cp2">报考岗位</text>
+      <input class="cp2_content" placeholder="请填写报考岗位" bindinput="input_gw">{{gw}}</input>
+      <view class="shu3"></view>
+      <text class="cp3">联系方式</text>
+      <input class="cp3_content" placeholder="请填写联系方式" type='number' bindinput="input_phone">{{phone}}></input>
+      <view class="shu4"></view>
+      <text class="cp4">测评时间</text>
+      
+      <picker class="picker" mode="date" value="{{date}}" start="{{now_date}}" end="{{future_date}}" bindchange="bindDateChange">
+        <view class="cp4_content1">{{date}}</view>
+      </picker>
+      <picker class="picker" mode="date" value="{{date}}" start="{{now_date}}" end="{{future_date}}" bindchange="bindDateChange">
+         <image class="cp4_img1" src="../../images/xsj.png"></image>
+      </picker>
+
+      <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{cptime}}">
+        <view class="cp4_content2">{{cp_time}}</view>
+      </picker>
+       <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{cptime}}">
+        <image class="cp4_img2" src="../../images/xsj.png"></image>
+      </picker>
+
+      <image class="btn_mask2" src="../../images/btn_addr1.png" wx:if='{{!input_mask2}}'></image>
+      <view class="mask2_yes" wx:if='{{!input_mask2}}' >确定</view>
+      <image class="btn_mask2" src="../../images/btn_addr2.png" wx:if='{{input_mask2}}' bindtap="mask2_submit"></image>
+      <view class="mask2_yes" wx:if='{{input_mask2}}' bindtap="mask2_submit">确定</view>
+ 
+    <image class="mask1_del" src="../../images/del.png" bindtap="del_mask" data-del="{{2}}"></image>
+  </view>
+ 
+  <image  class="cp" src="../../images/cp.png" wx:if='{{!cp_sub}}' data-type='{{6}}' bindtap="cp"></image>
+  <button class='cp_wxbtn' wx:if="{{!islogin}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type='{{6}}'></button>
+
+  <image class="share" src="../../images/share.png"></image>
+  <button class="btn_share" open-type='share'>
+    <image class="ljlogo" src="../../images/lj.png"></image>
+    <view class="share_tip">免费送好友资料</view>
+    <image class="share_btn" src="../../images/share_btn.png"></image>
+    <view class="mss">马上送</view>
+  </button>
+</view>

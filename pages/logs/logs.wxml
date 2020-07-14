@@ -65,11 +65,16 @@
                                               <image class='suo_img'  style='width:24rpx;height:28rpx;' src="/images/749@2x.png"></image>未领取
                                           </view>
                                           <view wx:else>
-                                           <view wx:if='{{!pitem.last_time}}' bindtap='gokan_video'  data-video_id="{{pitem.video_id}}"  class='ri_text' data-xb="{{pindex}}" data-last_time="{{pitem.last_time}}" >
+                                           <view wx:if='{{!pitem.last_time}}' bindtap='gokan_video'  data-video_id="{{pitem.video_id}}"  class='ri_text' data-xb="{{pindex}}" data-last_time="{{pitem.last_time}}" data-video_percent="{{pitem.video_percent}}">
                                               去学习
                                           </view>
 
-                                          <view wx:else=''  bindtap='gokan_video'  data-video_id="{{pitem.video_id}}"  class='ri_text1' data-xb="{{pindex}}" data-last_time="{{pitem.last_time}}" >
+                                          <view wx:elif='{{pitem.video_percent == 1}}'  bindtap='gokan_video'  data-video_id="{{pitem.video_id}}"  class='ri_text1' data-xb="{{pindex}}" data-last_time="{{pitem.last_time}}" data-video_percent="{{pitem.video_percent}}">
+                                          <image class="jt" src="/images/jiantou.png"></image>
+                                              已完成
+                                          </view>
+
+                                          <view wx:else='{{}}'  bindtap='gokan_video'  data-video_id="{{pitem.video_id}}"  class='ri_text1' data-xb="{{pindex}}" data-last_time="{{pitem.last_time}}" data-video_percent="{{pitem.video_percent}}">
                                           <image class="jt" src="/images/jiantou.png"></image>
                                               上次学到
                                           </view>

@@ -1,68 +1,33 @@
 <!--index.wxml-->
 <view class="container">
 
-
-
   <image class="background_img" src="../../images/background.png" ></image>
-  <image class="gk" src="../../images/gk.png"></image>
-  <view class="pdf" wx:if='{{islogin}}' bindtap="showModal_num" data-type='{{1}}'></view>
-  <button class='pdf_wxbtn' wx:else="" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type='{{1}}'></button>
-   <!-- <view class="pdf" wx:else="" bindtap="showModal_login" data-type='{{1}}'></view> -->
-  <view class="video" wx:if='{{islogin}}' bindtap="showModal_num" data-type='{{2}}'></view>
-  <button class='video_wxbtn' wx:else="" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type='{{2}}'></button>
-   <!-- <view class="video" wx:else="" bindtap="showModal_login" data-type='{{2}}'></view> -->
-  <view class="gk-title" wx:if='{{islogin}}' bindtap="showModal_num" data-type='{{1}}'>下午就能用的申论素材</view>
- <button class='gk_wxbtn' wx:else="" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type='{{1}}'>下午就能用的申论素材</button>
-  <!-- <view class="gk-title" wx:else="" bindtap="showModal_login" data-type='{{1}}'>下午就能用的申论素材</view> -->
-  <view class="sk-title" wx:if='{{islogin}}' bindtap="showModal_num" data-type='{{2}}'>申论热点终极密押</view>
+  <image class="gk" src="../../images/v3.png"></image>
+
+  <view class="layout1" wx:if="{{login}}" bindtap="to_detail"></view>
+  <view class="layout1" style="margin-top: 395rpx;" wx:if="{{login}}"></view>
+  <view class="layout1" style="margin-top: 610rpx;" wx:if="{{login}}"></view>
+  <view class="layout1" style="margin-top: 840rpx;" wx:if="{{login}}"></view>
+  <view class="layout1" style="margin-top: 1055rpx;" wx:if="{{login}}"></view>
+  <view class="layout1" style="margin-top: 1270rpx;" wx:if="{{login}}"></view>
+
+  <button class='pdf_wxbtn' wx:if="{{!login}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" ></button>
+  <button class='pdf_wxbtn' wx:if="{{!login}}" style="margin-top: 395rpx;" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" ></button>
+  <button class='pdf_wxbtn' wx:if="{{!login}}" style="margin-top: 610rpx;" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" ></button>
+  <button class='pdf_wxbtn' wx:if="{{!login}}" style="margin-top: 840rpx;" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" ></button>
+  <button class='pdf_wxbtn' wx:if="{{!login}}" style="margin-top: 1055rpx;" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" ></button>
+  <button class='pdf_wxbtn' wx:if="{{!login}}" style="margin-top: 1270rpx;" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" ></button>
+
   
-  <!-- <view class="sk-title" wx:else="" bindtap="showModal_login" data-type='{{2}}'>申论热点终极密押</view> -->
-  <button class='sk_wxbtn' wx:else="" data-type='{{2}}' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">申论热点终极密押</button>
-  <image class="sk" src="../../images/sk.png"></image>
-  <view class="layout1">
-    <view class='layout11' bindtap="go_logs">
-      <view class='course_title'>{{course_detail.title}}</view>
-      <view class='course_detail'>{{course_detail.explains}}</view>
-      <view style='left:{{index * 70 + 43}}rpx;' class='teach-ico' wx:for="{{course_detail.teacherlist}}" wx:key="this">
-        <image class="teach-ico-img" src="{{item.avatar}}" mode="aspectFill" ></image>
-        <view class='teach-name'>{{item.name}}</view>
-      </view>
-    </view>
-    
-    <view class="layout12" wx:if='{{islogin}}' bindtap="showModal_addr" data-type='{{3}}'>
-      <text class="pro_price">原价:￥499</text>
-      <image class="btn_lq" src="../../images/btn_lq1.png" wx:if='{{!btn1}}'></image>
-      <image class="btn_lq" src="../../images/btn_lq2.png" wx:if='{{btn1}}'></image>
-      <view class="lq">免费领取</view>
-    </view>
-    <!-- <view class="layout12" wx:else='' bindtap="showModal_login" data-type='{{3}}'> -->
-    <view class="layout12" wx:else='' data-type='{{3}}'>
-    <text class="pro_price">原价:￥499</text>                                      
-      <image class="btn_lq" src="../../images/btn_lq1.png" wx:if='{{!btn1}}'></image>
-      <image class="btn_lq" src="../../images/btn_lq2.png" wx:if='{{btn1}}'></image>
-      <button class='lq_wxbtn' open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type='{{3}}'></button>
-      <view class="lq">免费领取</view>
-    </view>
-  </view>
-
+  
   <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_num}}"></view>
-  <!-- <view class="layout2" wx:if="{{showModal_num}}" >
-    <view class="layout21" wx:for='{{kclist}}' wx:key="{{index}}" wx:for-index="xb">
-      <image class="kuang" src="../../images/kuang.png" data-xb='{{xb}}' bindtap="choose"></image>
-      <view class="num" data-xb='{{xb}}' bindtap="choose">{{item.bh}}</view>
-    </view>
-    <image class="del" src="../../images/del.png" bindtap="del_num"></image>
-  </view> -->
-
-<view class="layout2" wx:if="{{showModal_num}}" >
-    
-      <image class="kc" src="../../images/kc.png" ></image>
-      <input class="input_kc" placeholder="请向咨询老师索取关键字" type='number' bindinput="input_kc"></input>
-      <image class="btn_kc" src="../../images/btn_addr1.png" wx:if='{{!input_kc}}'></image>
-      <view class="kc_yes" wx:if='{{!input_kc}}'>确定</view>
-      <image class="btn_kc" src="../../images/btn_addr2.png" wx:if='{{input_kc}}' bindtap="kc_submit"></image>
-      <view class="kc_yes" wx:if='{{input_kc}}' bindtap="kc_submit">确定</view>
- 
+  <view class="layout2" wx:if="{{showModal_num}}" >
+    <image class="kc" src="../../images/kc3.png" ></image>
+    <input class="input_kc" placeholder="请向咨询老师索取关键字" type='number' bindinput="input_kc"></input>
+    <image class="btn_kc" src="../../images/btn_addr1.png" wx:if='{{!input_kc}}'></image>
+    <view class="kc_yes" wx:if='{{!input_kc}}'>确定</view>
+    <image class="btn_kc" src="../../images/btn_addr2.png" wx:if='{{input_kc}}' bindtap="kc_submit"></image>
+    <view class="kc_yes" wx:if='{{input_kc}}' bindtap="kc_submit">确定</view>
     <image class="kc_del" src="../../images/del.png" bindtap="del_num"></image>
   </view>
 
@@ -89,33 +54,7 @@
     <image class="del" src="../../images/del.png" bindtap="del_addr"></image>
   </view>
   
-  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_login}}"></view>
-  <view class="dl_modalDlg" wx:if="{{showModal_login}}">
-      <image class="dl_close" bindtap="del_login" src="../../images/cha.png"/>
-      <view class="way1">
-        <view class="shu"></view>
-        <text class="bang">绑定手机号登录:</text>
-      </view>
-      
-      <input class="srcall" bindinput="inputphone" placeholder="请输入手机号"></input>
-      <view class="heng_dl"></view>
-      <view class="yz">
-        <input class="sryzm" bindinput="inputcode" placeholder="请输入验证码"></input>
-        <text class="hqyzm" bindtap="getYzm">{{time}}{{suffix}}</text>
-      </view>
-      <view class="heng_dl"></view>
-      <view class="save" bindtap="login">
-        <text class="bc">登录</text>
-      </view>
-      
-      <text class="wx_tip">—— 或授权微信绑定的手机号登录 ——</text>
-      
-      <button class="wxlogin" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
-        <image class="wxlogin_img" src="../../images/wxlogin.png" mode="aspectFill"/>
-        <text class="wxlogin_dl">登录</text>
-      </button>
-      
-  </view>
+  
 
   <image class="share" src="../../images/share.png"></image>
   <button class="btn_share" open-type='share'>

@@ -215,13 +215,13 @@ Page({
     // var cscs = e.currentTarget.dataset.cscs
     // console.log(cscs)
 
-    
+    var video_percent = e.currentTarget.dataset.video_percent
     var last_time = e.currentTarget.dataset.last_time
     var video_id = e.currentTarget.dataset.video_id
     // var lesson_id = e.currentTarget.dataset.lesson_id
     // console.log(e)
     wx.navigateTo({
-      url: '/pages/kan_video/kan_video?video_id=' + video_id + '&last_time=' + last_time,
+      url: '/pages/kan_video/kan_video?video_id=' + video_id + '&last_time=' + last_time + '&video_percent=' + video_percent,
     })
     console.log(video_id  + 'video_id')
   },

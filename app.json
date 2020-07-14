@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/two_home/two_home",
+    "pages/two_v/two_v",
+    "pages/cp/cp",
     "pages/logs/logs",
     "pages/video/video",
     "pages/kan_video/kan_video"

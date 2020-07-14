@@ -55,13 +55,25 @@ Page({
     
     app.ljgk.xcxkanVideo(params).then(d => {
       if (d.data.status == 1) {
-        that.setData({ videoUrl: d.data.data.video_url, last_watch_time: d.data.data.last_watch_time, last_time: options.last_time  })
+        that.setData({ videoUrl: d.data.data.video_url, last_watch_time: d.data.data.last_watch_time,  video_percent: options.video_percent  })
+        if (that.data.video_percent == 1) {
+          that.setData({
+            last_time: 0,
+          })
+        } else {
+          that.setData({
+            last_time: options.last_time
+          })
+          
+        }
         // that.data.last_time = options.last_time;
-        console.log(that.data.videoUrl +"that.data.videoUrl")
+        console.log(that.data.videoUrl + "that.data.videoUrl")
         console.log(that.data.last_watch_time + "that.data.last_watch_time")
       } else {
-        
+
       }
+        
+      
     })
    
 

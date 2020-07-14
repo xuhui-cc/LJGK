@@ -20,23 +20,10 @@ Page({
   onLoad: function () {
     let that = this
     that.setData({
-      islogin: wx.getStorageSync("islogin"),
-      ispay: wx.getStorageSync("ispay"),
+      login: wx.getStorageSync("login"),
       kc_yes: wx.getStorageSync("kc_yes"),
     })
-    //获取考场信息
-    // var params = {
-     
-    // }
-    // app.ljgk.xcxGetKcList(params).then(d => {
-    //   console.log(d)
-    //   if (d.data.status == 1) {
-    //     that.setData({
-    //       kclist:  d.data.data
-    //     })
-    //     console.log(that.data.kclist)
-    //   }
-    // })
+    
 
     var params = {
 
@@ -59,6 +46,77 @@ Page({
     this.onLoad()
   },
 
+  //获取微信绑定手机号
+  getPhoneNumber: function (e) {
+    var that = this
+    wx.login({
+      success: res => {
+
+        if (e.detail.errMsg == "getPhoneNumber:ok") {
+          wx.showLoading({
+            title: '登录中...',
+          })
+          wx.login({
+            success(res) {
+              console.log("cccs.code" + res.code)
+
+              let iv = encodeURIComponent(e.detail.iv); 
+              let encryptedData = encodeURIComponent(e.detail.encryptedData);
+              let code = res.code
+              var params = {
+                "code": code,
+                "iv": iv,
+                "encryptedData": encryptedData
+              }
+              console.log(params)
+              app.ljgk.loginregister(params).then(d => {
+                if (d.data.status == 0) {
+                  wx.setStorageSync('token', d.data.token);
+                  wx.setStorageSync('login', true);
+                  that.setData({
+                    login:true
+                  })
+                  if(!that.data.kc_yes){
+                    that.setData({
+                      showModal_num:true
+                    })
+                  }
+                  // wx.setStorageSync('uid', d.data.uid);
+                  // app.globalData.uid = d.data.uid;
+                  // wx.setStorageSync('userInfo', d.data.userInfo)
+                  // that.onShow()
+                } else {
+                  wx.showToast({
+                    title: "登陆失败",
+                    icon: 'none',
+                    duration: 1000
+                  })
+                  console.log(d.data.msg)
+                }
+                
+              })
+              wx.hideLoading()
+            } 
+          })
+        } else {
+          wx.hideLoading()
+        }
+      }
+    })
+  },
+
+  to_detail:function(){
+    let that= this
+    if(!that.data.kc_yes){
+      that.setData({
+        showModal_num:true
+      })
+    }else{
+      console.log("关键字已输入")
+    }
+  },
+
+
   input_kc: function(e) {
 
     var regkcid = new RegExp('[0-9]', 'g');
@@ -68,16 +126,105 @@ Page({
    
     if (iskcid) {
       if (e.detail.value >= 1 ){
-        if (e.detail.value <= 150) {
+        if (101 <= e.detail.value && e.detail.value <= 199) {
           this.setData({
             kcid: e.detail.value,
             input_kc: true
           })
-        } else {
+        } else if (201 <= e.detail.value && e.detail.value  <= 299) {
+          this.setData({
+            kcid: e.detail.value,
+            input_kc: true
+          })
+        } 
+        else if (301 <= e.detail.value && e.detail.value  <= 399) {
+          this.setData({
+            kcid: e.detail.value,
+            input_kc: true
+          })
+        } 
+        else if (401 <= e.detail.value && e.detail.value  <= 499) {
+          this.setData({
+            kcid: e.detail.value,
+            input_kc: true
+          })
+        } 
+        else if (501 <= e.detail.value && e.detail.value  <= 599) {
+          this.setData({
+            kcid: e.detail.value,
+            input_kc: true
+          })
+        } 
+        else if (601 <= e.detail.value && e.detail.value  <= 699) {
+          this.setData({
+            kcid: e.detail.value,
+            input_kc: true
+          })
+        } else if (701 <= e.detail.value && e.detail.value  <= 799) {
+          this.setData({
+            kcid: e.detail.value,
+            input_kc: true
+          })
+        } 
+        else if (801 <= e.detail.value && e.detail.value  <= 899) {
+          this.setData({
+            kcid: e.detail.value,
+            input_kc: true
+          })
+        } 
+        else if (901 <= e.detail.value && e.detail.value  <= 999) {
+          this.setData({
+            kcid: e.detail.value,
+            input_kc: true
+          })
+        } 
+        else if (1001 <= e.detail.value && e.detail.value  <= 1099) {
+          this.setData({
+            kcid: e.detail.value,
+            input_kc: true
+          })
+        } 
+        else if (1101 <= e.detail.value && e.detail.value  <= 1199) {
+          this.setData({
+            kcid: e.detail.value,
+            input_kc: true
+          })
+        } 
+        else if (1201 <= e.detail.value && e.detail.value  <= 1299) {
+          this.setData({
+            kcid: e.detail.value,
+            input_kc: true
+          })
+        } 
+        else if (1301 <= e.detail.value && e.detail.value  <= 1399) {
+          this.setData({
+            kcid: e.detail.value,
+            input_kc: true
+          })
+        } 
+        else if (1401 <= e.detail.value && e.detail.value  <= 1499) {
+          this.setData({
+            kcid: e.detail.value,
+            input_kc: true
+          })
+        } 
+        else if (1501 <= e.detail.value && e.detail.value  <= 1599) {
+          this.setData({
+            kcid: e.detail.value,
+            input_kc: true
+          })
+        } 
+        else if (1601 <= e.detail.value && e.detail.value  <= 1699) {
+          this.setData({
+            kcid: e.detail.value,
+            input_kc: true
+          })
+        } 
+        else  {
           wx.showToast({
             title: "请输入正确的关键字",
             icon: 'none',
-            duration: 1000
+            duration: 500
           })
           this.setData({
             input_kc: false
@@ -87,20 +234,18 @@ Page({
         wx.showToast({
           title: "请输入正确的关键字",
           icon: 'none',
-          duration: 1000
+          duration: 500
         })
         this.setData({
           input_kc: false
         })
       }
-      
-     
     }
     else {
       wx.showToast({
         title: "请输入正确的关键字",
         icon: 'none',
-        duration: 1000
+        duration: 2000
       })
       this.setData({
         kcid: "",
@@ -108,8 +253,6 @@ Page({
       })
     }
     console.log(this.data.kcid + 'kcid')
-
-    
     
   },
   //免费领取按钮判断
@@ -448,80 +591,6 @@ Page({
     })
   },
 
-//获取微信绑定手机号
-  getPhoneNumber: function (e) {
-    var that = this
-    //单微信获取测试
-    var type = e.currentTarget.dataset.type;
-    console.log(type + 'type')
-    that.setData({
-      type: type
-    })
-    //单微信获取测试结束
-    wx.login({
-      success: res => {
-
-        if (e.detail.errMsg == "getPhoneNumber:ok") {
-          wx.showLoading({
-            title: '登录中...',
-          })
-          wx.login({
-            success(res) {
-              console.log("cccs.code" + res.code)
-
-              let iv = encodeURIComponent(e.detail.iv); 
-              let encryptedData = encodeURIComponent(e.detail.encryptedData);
-              let code = res.code
-              var params = {
-                "code": code,
-                "iv": iv,
-                "encryptedData": encryptedData
-              }
-              console.log(params)
-              app.ljgk.loginregister(params).then(d => {
-                if (d.data.status == 0) {
-                  wx.setStorageSync('token', d.data.token);
-                  wx.setStorageSync('uid', d.data.uid);
-                  app.globalData.uid = d.data.uid;
-                  wx.setStorageSync('userInfo', d.data.userInfo)
-                  
-                } else {
-                  // wx.showToast({
-                  //   title: "登陆失败",
-                  //   icon: 'none',
-                  //   duration: 1000
-                  // })
-                  // console.log(d.data.msg)
-                }
-                
-              })
-              wx.hideLoading()
-            } 
-          })
-          if (this.data.type == 1 || this.data.type == 2) {
-            that.setData({
-              showModal_num: true,
-              showModal_login: false,
-              islogin: true
-
-            })
-            wx.setStorageSync("islogin", this.data.islogin)
-          }
-          else if (this.data.type == 3) {
-            that.setData({
-              showModal_addr: true,
-              showModal_login: false,
-              islogin: true
-
-            })
-            wx.setStorageSync("islogin", this.data.islogin)
-          }
-        } else {
-          wx.hideLoading()
-        }
-      }
-    })
-  },
 
   
 
