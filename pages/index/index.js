@@ -49,6 +49,10 @@ Page({
   //获取微信绑定手机号
   getPhoneNumber: function (e) {
     var that = this
+    var type = e.currentTarget.dataset.type
+    that.setData({
+      type : type
+    })
     wx.login({
       success: res => {
 
@@ -81,7 +85,7 @@ Page({
                       showModal_num:true
                     })
                   }
-                  // wx.setStorageSync('uid', d.data.uid);
+                  wx.setStorageSync('uid', d.data.uid);
                   // app.globalData.uid = d.data.uid;
                   // wx.setStorageSync('userInfo', d.data.userInfo)
                   // that.onShow()
@@ -276,142 +280,92 @@ Page({
   },
   //考场提交
   kc_submit: function() {
-   
+   let that = this
       this.setData({
         kc_yes: true
       })
       console.log("考场选择" + this.data.kc_yes)
       wx.setStorageSync('kc_yes', this.data.kc_yes)
       var uid = wx.getStorageSync("uid")
-      if (this.data.type == 1) {
         var params = {
           uid: uid,
           kcid: this.data.kcid
         }
-        //获取pdf文件
+        
         app.ljgk.xcxAddKaochang(params).then(d => {
           if (d.data.status == 1) {
             console.log(d.data.msg +'msg,addkc')
             console.log('考场号：' + this.data.kcid)
+            if(that.data.type >3){
+              var params1 = {}
+            app.ljgk.xcxGetZiliao(params1).then(d => {
+              if (d.data.status == 1) {
+                this.setData({
+                  gkzl: d.data.data,
+                })
+                console.log(this.data.gkzl + 'gkzl')
+              }
+              if(that.data.type == 4){
+                that.open_file(that.data.gkzl.xckqtfjn)
+              }else if(that.data.type == 5){
+                that.open_file(that.data.gkzl.slkqmy)
+              }else if(that.data.type == 6){
+                that.open_file(that.data.gkzl.lkmsbd)
+              }
+            })
+            }else{
+              wx.navigateTo({
+                url: '/pages/video/video?type=' + that.data.type,
+              })
+            }
+            
           }
           else {
             console.log('失败')
           }
         })
-
-        app.ljgk.xcxGetZiliao(params).then(d => {
-          if (d.data.status == 1) {
-            this.setData({
-              gkzl: d.data.data,
-
-            })
-            console.log(this.data.gkzl + 'gkzl')
-          }
-
-          wx.downloadFile({
-            url: this.data.gkzl.pdf, //仅为示例，并非真实的资源
-            success(res) {
-              // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
-
-
-              var filePath = res.tempFilePath
-
-              wx.openDocument({
-
-                filePath: filePath,
-
-                success: function (res) {
-
-                  console.log('打开文档成功')
-
-                }
-
-              })
-            }
-
-          })
-
-        })
+        
         // wx.navigateTo({
         //   url: '/pages/pdf/pdf',
         // })
         this.setData({
           showModal_num: false
         })
-      }
-      else {
-        var params = {
-          uid: uid,
-          kcid: this.data.kcid
-        }
-        //获取pdf文件
-        app.ljgk.xcxAddKaochang(params).then(d => {
-          if (d.data.status == 1) {
-            console.log(d.data.msg +'sddkc')
-            console.log('考场号：' + this.data.kcid)
-          }
-          else {
-            console.log('失败')
-          }
-        })
-        wx.navigateTo({
-          url: '/pages/video/video',
-        })
-        this.setData({
-          showModal_num: false
-        })
-      }
+      
+      
     
   },
   //考场选择蒙层判断
   showModal_num: function (e) {
+    let that = this
     var type = e.currentTarget.dataset.type;
     console.log(type + 'type')
-    this.setData({
+    var url 
+    that.setData({
       type:type
     })
-    if (this.data.kc_yes){
-      if(this.data.type == 1){
-        var params = {
-
-        }
+    if (that.data.kc_yes){
+      if(type > 3){
+        var params = {}
         //获取pdf资料
         app.ljgk.xcxGetZiliao(params).then(d => {
           if (d.data.status == 1) {
-            this.setData({
+            that.setData({
               gkzl: d.data.data,
-
             })
-            console.log(this.data.gkzl +'gkzl')
           }
-          wx.downloadFile({
-            url: this.data.gkzl.pdf, //仅为示例，并非真实的资源
-            success(res) {
-              // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
-
-
-              var filePath = res.tempFilePath
-
-              wx.openDocument({
-
-                filePath: filePath,
-
-                success: function (res) {
-
-                  console.log('打开文档成功')
-
-                }
-
-              })
-            }
-
-          })
-
+          if(type == 4){
+            that.open_file(that.data.gkzl.xckqtfjn)
+          }else if(type == 5){
+            that.open_file(that.data.gkzl.slkqmy)
+          }else if(type == 6){
+            that.open_file(that.data.gkzl.lkmsbd)
+          }
         })
       }
       else {
         wx.navigateTo({
-          url: '/pages/video/video',
+          url: '/pages/video/video?type=' + type,
         })
       }
     }
@@ -421,6 +375,33 @@ Page({
       })
     }
     
+  },
+
+  //打开文档
+  open_file:function(url){
+    let that =this
+    wx.downloadFile({
+            url: url, //仅为示例，并非真实的资源
+            success(res) {
+              // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+
+
+              var filePath = res.tempFilePath
+
+              wx.openDocument({
+
+                filePath: filePath,
+
+                success: function (res) {
+
+                  console.log('打开文档成功')
+
+                }
+
+              })
+            }
+
+          })
   },
   //考场蒙层关闭按钮
   del_num: function () {

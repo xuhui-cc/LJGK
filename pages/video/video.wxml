@@ -1,5 +1,35 @@
 <!--pages/video/video.wxml-->
 
-  <video class="video" src='{{gkzl.mp4}}' autoplay='true' controls='true'></video>
+  <video class="video" src='{{url}}' autoplay='true' controls='true'></video>
 
+  <view class="head">相关视频</view>
+  <view>
+    <view class="title" wx:if="{{type > 1}}">联考考前小贴士</view>
+    <view class="title" wx:elif="{{type == 1 }}">联考行测必胜攻略</view>
+    <view class="to_video" bindtap="to_video" data-vm="{{1}}">立即查看</view>
+    <image class="v1" src="../../images/v1.png"></image>
+  </view>
+  
+  <view>
+    <view class="title" wx:if="{{type < 3}}">联考申论高分锦囊</view>
+    <view class="title" wx:elif="{{type == 3}}">联考行测必胜攻略</view>
+    <view class="to_video" bindtap="to_video" data-vm="{{2}}">立即查看</view>
+    <image class="v1" src="../../images/v1.png"></image>
+  </view>
+
+
+  <view class="head">相关文档</view>
+  <view>
+    <view class="title" style="color:rgba(255,122,72,1);">行测考前提分锦囊</view>
+    <view class="to_video" style="background:rgba(255,122,72,1);" bindtap="openFile" data-vf="{{4}}">立即查看</view>
+    <image class="v1" src="../../images/v2.png"></image>
+  </view><view>
+    <view class="title" style="color:rgba(255,122,72,1);">申论考前密押</view>
+    <view class="to_video" style="background:rgba(255,122,72,1);" bindtap="openFile" data-vf="{{5}}">立即查看</view>
+    <image class="v1" src="../../images/v2.png"></image>
+  </view><view>
+    <view class="title" style="color:rgba(255,122,72,1);">联考面试宝典</view>
+    <view class="to_video" style="background:rgba(255,122,72,1);" bindtap="openFile" data-vf="{{6}}">立即查看</view>
+    <image class="v1" src="../../images/v2.png"></image>
+  </view>
 
