@@ -9,6 +9,10 @@ const fetch = require('./fetch')
 function xcxAddKaochang(params) {
   return fetch.ljgkfetch(URI, 'xcxAddKaochang', params)
 }
+//面试意向
+function saveYixiang(params) {
+  return fetch.ljgkfetch(URI, 'xcxsaveyixiang', params)
+}
 //PDF、视频获取
 function xcxGetZiliao(params) {
   return fetch.ljgkfetch(URI, 'xcxGetZiliao', params)
@@ -69,4 +73,4 @@ function xcxPushMsg(params) {
 
 
 
-module.exports = { xcxAddKaochang, xcxGetZiliao, xcxAddAddress, xcxGetCourseInfo, xcxGetCourseInfo1, xcxMyGetyzm, loginRegister, loginregister, xcxkanVideo, xcxsaveStudyRecord, xcxSaveCeping, xcxSaveCode, xcxGetVideoList, xcxGetOpenid, xcxPushMsg}
+module.exports = { xcxAddKaochang, xcxGetZiliao, xcxAddAddress, xcxGetCourseInfo, xcxGetCourseInfo1, xcxMyGetyzm, loginRegister, loginregister, xcxkanVideo, xcxsaveStudyRecord, xcxSaveCeping, xcxSaveCode, xcxGetVideoList, xcxGetOpenid, xcxPushMsg,saveYixiang}

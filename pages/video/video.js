@@ -81,6 +81,17 @@ Page({
     }else if(vf == 5){
       that.open_file(that.data.gkzl.slkqmy)
     }else if(vf == 6){
+      if(!wx.getStorageSync('yx')){
+        var params = {
+          "uid":wx.getStorageSync('uid')
+        }
+        app.ljgk.saveYixiang(params).then(d => {
+          if (d.data.status == 1) {
+            console.log("意向成功")
+            wx.setStorageSync('yx', true)
+          }
+        })
+      }
       that.open_file(that.data.gkzl.lkmsbd)
     }
   },

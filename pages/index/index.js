@@ -126,105 +126,114 @@ Page({
     var regkcid = new RegExp('[0-9]', 'g');
 
     var iskcid = regkcid.exec(e.detail.value);
-    
-   
     if (iskcid) {
-      if (e.detail.value >= 1 ){
-        if (101 <= e.detail.value && e.detail.value <= 199) {
-          this.setData({
-            kcid: e.detail.value,
-            input_kc: true
-          })
-        } else if (201 <= e.detail.value && e.detail.value  <= 299) {
-          this.setData({
-            kcid: e.detail.value,
-            input_kc: true
-          })
-        } 
-        else if (301 <= e.detail.value && e.detail.value  <= 399) {
-          this.setData({
-            kcid: e.detail.value,
-            input_kc: true
-          })
-        } 
-        else if (401 <= e.detail.value && e.detail.value  <= 499) {
-          this.setData({
-            kcid: e.detail.value,
-            input_kc: true
-          })
-        } 
-        else if (501 <= e.detail.value && e.detail.value  <= 599) {
-          this.setData({
-            kcid: e.detail.value,
-            input_kc: true
-          })
-        } 
-        else if (601 <= e.detail.value && e.detail.value  <= 699) {
-          this.setData({
-            kcid: e.detail.value,
-            input_kc: true
-          })
-        } else if (701 <= e.detail.value && e.detail.value  <= 799) {
-          this.setData({
-            kcid: e.detail.value,
-            input_kc: true
-          })
-        } 
-        else if (801 <= e.detail.value && e.detail.value  <= 899) {
-          this.setData({
-            kcid: e.detail.value,
-            input_kc: true
-          })
-        } 
-        else if (901 <= e.detail.value && e.detail.value  <= 999) {
-          this.setData({
-            kcid: e.detail.value,
-            input_kc: true
-          })
-        } 
-        else if (1001 <= e.detail.value && e.detail.value  <= 1099) {
-          this.setData({
-            kcid: e.detail.value,
-            input_kc: true
-          })
-        } 
-        else if (1101 <= e.detail.value && e.detail.value  <= 1199) {
-          this.setData({
-            kcid: e.detail.value,
-            input_kc: true
-          })
-        } 
-        else if (1201 <= e.detail.value && e.detail.value  <= 1299) {
-          this.setData({
-            kcid: e.detail.value,
-            input_kc: true
-          })
-        } 
-        else if (1301 <= e.detail.value && e.detail.value  <= 1399) {
-          this.setData({
-            kcid: e.detail.value,
-            input_kc: true
-          })
-        } 
-        else if (1401 <= e.detail.value && e.detail.value  <= 1499) {
-          this.setData({
-            kcid: e.detail.value,
-            input_kc: true
-          })
-        } 
-        else if (1501 <= e.detail.value && e.detail.value  <= 1599) {
-          this.setData({
-            kcid: e.detail.value,
-            input_kc: true
-          })
-        } 
-        else if (1601 <= e.detail.value && e.detail.value  <= 1699) {
-          this.setData({
-            kcid: e.detail.value,
-            input_kc: true
-          })
-        } 
-        else  {
+      if (e.detail.value.length == 4) {
+        if (e.detail.value >= 1 ){
+          if (101 <= e.detail.value && e.detail.value <= 199) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } else if (201 <= e.detail.value && e.detail.value  <= 299) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (301 <= e.detail.value && e.detail.value  <= 399) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (401 <= e.detail.value && e.detail.value  <= 499) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (501 <= e.detail.value && e.detail.value  <= 599) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (601 <= e.detail.value && e.detail.value  <= 699) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } else if (701 <= e.detail.value && e.detail.value  <= 799) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (801 <= e.detail.value && e.detail.value  <= 899) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (901 <= e.detail.value && e.detail.value  <= 999) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1001 <= e.detail.value && e.detail.value  <= 1099) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1101 <= e.detail.value && e.detail.value  <= 1199) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1201 <= e.detail.value && e.detail.value  <= 1299) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1301 <= e.detail.value && e.detail.value  <= 1399) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1401 <= e.detail.value && e.detail.value  <= 1499) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1501 <= e.detail.value && e.detail.value  <= 1599) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1601 <= e.detail.value && e.detail.value  <= 1699) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else  {
+            wx.showToast({
+              title: "请输入正确的关键字",
+              icon: 'none',
+              duration: 500
+            })
+            this.setData({
+              input_kc: false
+            })
+          }
+        }else{
           wx.showToast({
             title: "请输入正确的关键字",
             icon: 'none',
@@ -234,16 +243,16 @@ Page({
             input_kc: false
           })
         }
-      }else{
-        wx.showToast({
-          title: "请输入正确的关键字",
-          icon: 'none',
-          duration: 500
-        })
-        this.setData({
-          input_kc: false
-        })
-      }
+    }else{
+      wx.showToast({
+        title: "请输入正确的关键字",
+        icon: 'none',
+        duration: 500
+      })
+      this.setData({
+        input_kc: false
+      })
+    }
     }
     else {
       wx.showToast({
@@ -310,6 +319,17 @@ Page({
               }else if(that.data.type == 5){
                 that.open_file(that.data.gkzl.slkqmy)
               }else if(that.data.type == 6){
+                if(!wx.getStorageSync('yx')){
+                  var params = {
+                    "uid":wx.getStorageSync('uid')
+                  }
+                  app.ljgk.saveYixiang(params).then(d => {
+                    if (d.data.status == 1) {
+                      console.log("意向成功")
+                      wx.setStorageSync('yx', true)
+                    }
+                  })
+                }
                 that.open_file(that.data.gkzl.lkmsbd)
               }
             })
@@ -339,6 +359,7 @@ Page({
   showModal_num: function (e) {
     let that = this
     var type = e.currentTarget.dataset.type;
+    var yx = wx.getStorageSync('yx')
     console.log(type + 'type')
     var url 
     that.setData({
@@ -359,6 +380,17 @@ Page({
           }else if(type == 5){
             that.open_file(that.data.gkzl.slkqmy)
           }else if(type == 6){
+            if(!yx){
+              var params = {
+                "uid":wx.getStorageSync('uid')
+              }
+              app.ljgk.saveYixiang(params).then(d => {
+                if (d.data.status == 1) {
+                  console.log("意向成功")
+                  wx.setStorageSync('yx', true)
+                }
+              })
+            }
             that.open_file(that.data.gkzl.lkmsbd)
           }
         })
