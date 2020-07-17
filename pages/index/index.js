@@ -13,7 +13,8 @@ Page({
     currentTime: 61,
     islogin: false,        //是否登录
     kc_yes: false,  
-    input_kc: false    //考场初始判断
+    input_kc: false,    //考场初始判断
+    click:false,
   },
   //事件处理函数
   
@@ -358,6 +359,9 @@ Page({
   //考场选择蒙层判断
   showModal_num: function (e) {
     let that = this
+    that.setData({
+      click:true
+    })
     var type = e.currentTarget.dataset.type;
     var yx = wx.getStorageSync('yx')
     console.log(type + 'type')
@@ -393,17 +397,24 @@ Page({
             }
             that.open_file(that.data.gkzl.lkmsbd)
           }
+          
         })
       }
       else {
         wx.navigateTo({
           url: '/pages/video/video?type=' + type,
         })
+        that.setData({
+          click:false
+        })
       }
     }
     else{
       this.setData({
         showModal_num: true
+      })
+      that.setData({
+        click:false
       })
     }
     
@@ -427,7 +438,9 @@ Page({
                 success: function (res) {
 
                   console.log('打开文档成功')
-
+                  that.setData({
+                    click:false
+                  })
                 }
 
               })
