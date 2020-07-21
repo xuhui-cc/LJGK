@@ -3,6 +3,8 @@
 const app = getApp()
 
 Page({
+  // 打开的文件路径 在onShow中删除文件
+  openFilePath: '',
   data: {
     showModal_num : false,     //考场蒙层
     btn1:false,          //免费领取按钮
@@ -14,6 +16,7 @@ Page({
     islogin: false,        //是否登录
     kc_yes: false,  
     input_kc: false,    //考场初始判断
+    fileName: "",
     click:false,
   },
   //事件处理函数
@@ -43,9 +46,21 @@ Page({
   },
   
 
+    /**
+   * 生命周期函数--监听页面显示
+   */
   onShow: function () {
-    this.onLoad()
+    console.log("onshow")
+    
   },
+
+    /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    this.clearLocalFile()
+  },
+
 
   //获取微信绑定手机号
   getPhoneNumber: function (e) {
@@ -87,9 +102,7 @@ Page({
                     })
                   }
                   wx.setStorageSync('uid', d.data.uid);
-                  // app.globalData.uid = d.data.uid;
-                  // wx.setStorageSync('userInfo', d.data.userInfo)
-                  // that.onShow()
+                  
                 } else {
                   wx.showToast({
                     title: "登陆失败",
@@ -224,6 +237,66 @@ Page({
               input_kc: true
             })
           } 
+          else if (1701 <= e.detail.value && e.detail.value  <= 1799) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1801 <= e.detail.value && e.detail.value  <= 1899) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1901 <= e.detail.value && e.detail.value  <= 1999) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (2001 <= e.detail.value && e.detail.value  <= 2099) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (2101 <= e.detail.value && e.detail.value  <= 2199) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (2201 <= e.detail.value && e.detail.value  <= 2299) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (2301 <= e.detail.value && e.detail.value  <= 2399) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (2401 <= e.detail.value && e.detail.value  <= 2499) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (2501 <= e.detail.value && e.detail.value  <= 2599) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (2601 <= e.detail.value && e.detail.value  <= 2699) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
           else  {
             wx.showToast({
               title: "请输入正确的关键字",
@@ -316,9 +389,9 @@ Page({
                 console.log(this.data.gkzl + 'gkzl')
               }
               if(that.data.type == 4){
-                that.open_file(that.data.gkzl.xckqtfjn)
+                that.open_file(that.data.gkzl.xckqtfjn,that.data.type)
               }else if(that.data.type == 5){
-                that.open_file(that.data.gkzl.slkqmy)
+                that.open_file(that.data.gkzl.slkqmy,that.data.type)
               }else if(that.data.type == 6){
                 if(!wx.getStorageSync('yx')){
                   var params = {
@@ -331,7 +404,7 @@ Page({
                     }
                   })
                 }
-                that.open_file(that.data.gkzl.lkmsbd)
+                that.open_file(that.data.gkzl.lkmsbd,that.data.type)
               }
             })
             }else{
@@ -380,9 +453,9 @@ Page({
             })
           }
           if(type == 4){
-            that.open_file(that.data.gkzl.xckqtfjn)
+            that.open_file(that.data.gkzl.xckqtfjn,type)
           }else if(type == 5){
-            that.open_file(that.data.gkzl.slkqmy)
+            that.open_file(that.data.gkzl.slkqmy,type)
           }else if(type == 6){
             if(!yx){
               var params = {
@@ -395,7 +468,7 @@ Page({
                 }
               })
             }
-            that.open_file(that.data.gkzl.lkmsbd)
+            that.open_file(that.data.gkzl.lkmsbd,type)
           }
           
         })
@@ -421,32 +494,86 @@ Page({
   },
 
   //打开文档
-  open_file:function(url){
+  open_file:function(url,type){
     let that =this
-    wx.downloadFile({
-            url: url, //仅为示例，并非真实的资源
-            success(res) {
-              // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+    console.log(url,"url")
+    var fileName
+    
+    if(type == 4){
+      fileName =  "行测考前提分锦囊.pdf"
+    }else if(type == 5){
+      fileName =  "申论考前密押.pdf"
+    }
+    else if(type == 6){
+      fileName =  "联考面试宝典.pdf"
+    }
+      that.setData({
+        fileName: fileName
+      })
+      let customFilePath = wx.env.USER_DATA_PATH + "/" + that.data.fileName
+      console.log('得到自定义路径：')
+      console.log(customFilePath)
 
+      wx.downloadFile({
+        url: url, //仅为示例，并非真实的资源
+        filePath: customFilePath,
+        success(res) {
+          // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
 
-              var filePath = res.tempFilePath
+          console.log(res)
+          var filePath = res.filePath
+          console.log('返回自定义路径：')
+          console.log(filePath)
 
-              wx.openDocument({
-
-                filePath: filePath,
-
-                success: function (res) {
-
-                  console.log('打开文档成功')
-                  that.setData({
-                    click:false
-                  })
-                }
-
+          that.openFilePath = filePath
+          wx.openDocument({
+            showMenu: true,
+            filePath: filePath,
+            success: function (res) {
+              console.log('打开文档成功')
+              wx.hideLoading()
+              that.setData({
+                click:false
               })
+            },
+            fail: function (res) {
+              console.log("打开文档失败");
+              console.log(res)
+              wx.hideLoading({
+                complete: (res) => {
+                  wx.showToast({
+                    title: '文件打开失败',
+                    icon: 'none'
+                  })
+                },
+              })
+              that.setData({
+                click:false
+              })
+            },
+            complete: function (res) {
+              console.log("complete");
+              console.log(res)
             }
-
           })
+        },
+        fail: function (res) {
+          console.log('文件下载失败')
+          console.log(res)
+          wx.hideLoading({
+            complete: (res) => {
+              wx.showToast({
+                title: '文件下载失败',
+                icon: 'none'
+              })
+            },
+          })
+          that.setData({
+            click:false
+          })
+        }
+        
+      })
   },
   //考场蒙层关闭按钮
   del_num: function () {
@@ -454,6 +581,31 @@ Page({
       showModal_num: false
     })
   },
+
+  /**
+   * 清除本地保存的文件
+  */
+ clearLocalFile: function () {
+  let that = this
+
+  if (this.openFilePath == '') {
+    return
+  }
+
+  let fs = wx.getFileSystemManager()
+  let filePath = this.openFilePath
+  fs.unlink({
+    filePath: filePath,
+    success(res) {
+      console.log("文件删除成功" + filePath)
+      that.openFilePath = ''
+    },
+    fail(res) {
+      console.log("文件删除失败" + filePath)
+      console.log(res)
+    }
+  })
+},
 //填写地址蒙层姓名
   input_name: function(e) {
     this.setData({
