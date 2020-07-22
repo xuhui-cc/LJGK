@@ -54,14 +54,6 @@ Page({
     
   },
 
-    /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    this.clearLocalFile()
-  },
-
-
   //获取微信绑定手机号
   getPhoneNumber: function (e) {
     var that = this
@@ -342,6 +334,50 @@ Page({
     console.log(this.data.kcid + 'kcid')
     
   },
+
+  cs_img:function(url){
+    let that = this
+    
+    var image = []
+    for(var i=1;i<=url.num;i++){
+      var img_url = url.pre + i + url.tail
+      image.push(img_url)
+    }
+    // image.push(arr[0])
+    wx.previewImage({
+      current: image[0],
+      urls: image
+    })
+    // let that = this
+    // var arr_img = []
+    // for(var i=1;i<=url.num;i++){
+    //   var img_url = url.pre + i + url.tail
+    //   arr_img.push(img_url)
+    // }
+    // that.setData({
+    //   arr_img:arr_img
+    // })
+    // that.previewImage(that.data.arr_img)
+  },
+
+   //打开图片
+   previewImage: function (arr) {
+    let that = this
+    
+    var image = []
+
+    image.push(arr[0])
+    wx.previewImage({
+      current: image[0],
+      urls: image
+    })
+
+  },
+
+
+
+
+
   //免费领取按钮判断
   showModal_addr: function() {
     if(this.data.ispay){
@@ -381,30 +417,58 @@ Page({
             console.log('考场号：' + this.data.kcid)
             if(that.data.type >3){
               var params1 = {}
+              var image1=[]
+              var image2=[]
+              var image3=[]
             app.ljgk.xcxGetZiliao(params1).then(d => {
               if (d.data.status == 1) {
+                
+                for(var i=1;i<=d.data.data.slkqmy.num;i++){
+                  var img_d = d.data.data.slkqmy.pre + i + d.data.data.slkqmy.tail
+                  image1.push(img_d)
+                }
+                for(var i=1;i<=d.data.data.lkmsbd.num;i++){
+                  var img_d = d.data.data.lkmsbd.pre + i + d.data.data.lkmsbd.tail
+                  image2.push(img_d)
+                }
+                for(var i=1;i<=d.data.data.xfkqtfjn.num;i++){
+                  var img_d = d.data.data.xfkqtfjn.pre + i + d.data.data.xfkqtfjn.tail
+                  image3.push(img_d)
+                }
+                console.log(image1)
                 this.setData({
                   gkzl: d.data.data,
+                  image1:image1,
+                  image2:image2,
+                  image3:image3,
                 })
                 console.log(this.data.gkzl + 'gkzl')
               }
               if(that.data.type == 4){
-                that.open_file(that.data.gkzl.xckqtfjn,that.data.type)
+                wx.navigateTo({
+                  url: '/pages/cs_file/cs_file?image=' + that.data.image1,
+                })
+                
               }else if(that.data.type == 5){
-                that.open_file(that.data.gkzl.slkqmy,that.data.type)
+                wx.navigateTo({
+                  url: '/pages/cs_file/cs_file?image=' + that.data.image2,
+                })
               }else if(that.data.type == 6){
-                if(!wx.getStorageSync('yx')){
+                if(!yx){
                   var params = {
                     "uid":wx.getStorageSync('uid')
                   }
                   app.ljgk.saveYixiang(params).then(d => {
                     if (d.data.status == 1) {
                       console.log("意向成功")
+                      
                       wx.setStorageSync('yx', true)
                     }
                   })
                 }
-                that.open_file(that.data.gkzl.lkmsbd,that.data.type)
+                wx.navigateTo({
+                  url: '/pages/cs_file/cs_file?image=' + that.data.image3,
+                })
               }
             })
             }else{
@@ -446,16 +510,42 @@ Page({
       if(type > 3){
         var params = {}
         //获取pdf资料
+
+        var image1=[]
+        var image2=[]
+        var image3=[]
         app.ljgk.xcxGetZiliao(params).then(d => {
           if (d.data.status == 1) {
-            that.setData({
+            for(var i=1;i<=d.data.data.slkqmy.num;i++){
+              var img_d = d.data.data.slkqmy.pre + i + d.data.data.slkqmy.tail
+              image2.push(img_d)
+            }
+            for(var i=1;i<=d.data.data.lkmsbd.num;i++){
+              var img_d = d.data.data.lkmsbd.pre + i + d.data.data.lkmsbd.tail
+              image3.push(img_d)
+            }
+            for(var i=1;i<=d.data.data.xfkqtfjn.num;i++){
+              var img_d = d.data.data.xfkqtfjn.pre + i + d.data.data.xfkqtfjn.tail
+              image1.push(img_d)
+            }
+            // console.log(image1)
+            this.setData({
               gkzl: d.data.data,
+              image1:image1,
+              image2:image2,
+              image3:image3,
             })
+            
           }
           if(type == 4){
-            that.open_file(that.data.gkzl.xckqtfjn,type)
+            wx.navigateTo({
+              url: '/pages/cs_file/cs_file?image=' + that.data.image1,
+            })
+            
           }else if(type == 5){
-            that.open_file(that.data.gkzl.slkqmy,type)
+            wx.navigateTo({
+              url: '/pages/cs_file/cs_file?image=' + that.data.image2,
+            })
           }else if(type == 6){
             if(!yx){
               var params = {
@@ -464,11 +554,14 @@ Page({
               app.ljgk.saveYixiang(params).then(d => {
                 if (d.data.status == 1) {
                   console.log("意向成功")
+                  
                   wx.setStorageSync('yx', true)
                 }
               })
             }
-            that.open_file(that.data.gkzl.lkmsbd,type)
+            wx.navigateTo({
+              url: '/pages/cs_file/cs_file?image=' + that.data.image3,
+            })
           }
           
         })
@@ -477,9 +570,7 @@ Page({
         wx.navigateTo({
           url: '/pages/video/video?type=' + type,
         })
-        that.setData({
-          click:false
-        })
+        
       }
     }
     else{
@@ -493,9 +584,35 @@ Page({
     
   },
 
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+    this.setData({
+      click:false
+    })
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    this.setData({
+      click:false
+    })
+  },
+
+  //web_view 文件打开跳转
+  to_webView:function(url){
+    wx.navigateTo({
+      url: '/pages/web_file/web_file?url=' + url,
+    })
+  },
+
   //打开文档
   open_file:function(url,type){
     let that =this
+    that.clearLocalFile()
     wx.showLoading({
       title: '资料打开中...',
     })
@@ -541,7 +658,7 @@ Page({
             },
             fail: function (res) {
               console.log("打开文档失败");
-              console.log(res)
+              // console.log(res)
               wx.hideLoading({
                 complete: (res) => {
                   wx.showToast({

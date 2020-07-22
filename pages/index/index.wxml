@@ -4,12 +4,13 @@
   <image class="background_img" src="../../images/background.png" ></image>
   <image class="gk" src="../../images/v3.png"></image>
 
-  <view class="layout1" wx:if="{{login}}" bindtap="to_detail" bindtap="{{click?'':'showModal_num'}}" data-type="{{1}}"></view>
-  <view class="layout1" style="margin-top: 395rpx;" wx:if="{{login}}" bindtap="{{click?'':'showModal_num'}}" data-type="{{2}}"></view>
-  <view class="layout1" style="margin-top: 610rpx;" wx:if="{{login}}" bindtap="{{click?'':'showModal_num'}}" data-type="{{3}}"></view>
-  <view class="layout1" style="margin-top: 840rpx;" wx:if="{{login}}" bindtap="{{click?'':'showModal_num'}}" data-type="{{4}}"></view>
-  <view class="layout1" style="margin-top: 1055rpx;" wx:if="{{login}}" bindtap="{{click?'':'showModal_num'}}" data-type="{{5}}"></view>
-  <view class="layout1" style="margin-top: 1270rpx;" wx:if="{{login}}" bindtap="{{click?'':'showModal_num'}}" data-type="{{6}}"></view>
+  <view class="layout1" wx:if="{{login}}" bindtap="to_detail" bindtap="showModal_num" data-type="{{1}}"></view>
+  <view class="layout1" style="margin-top: 395rpx;" wx:if="{{login}}" bindtap="showModal_num" data-type="{{2}}"></view>
+  <view class="layout1" style="margin-top: 610rpx;" wx:if="{{login}}" bindtap="showModal_num" data-type="{{3}}"></view>
+  <!-- <view class="layout1" style="margin-top: 840rpx;" wx:if="{{login}}" bindtap="showModal_num" data-type="{{4}}"></view> -->
+  <view class="layout1" style="margin-top: 840rpx;" wx:if="{{login}}" bindtap="showModal_num" data-type="{{4}}"></view>
+  <view class="layout1" style="margin-top: 1055rpx;" wx:if="{{login}}" bindtap="showModal_num" data-type="{{5}}"></view>
+  <view class="layout1" style="margin-top: 1270rpx;" wx:if="{{login}}" bindtap="showModal_num" data-type="{{6}}"></view>
 
   <button class='pdf_wxbtn' wx:if="{{!login}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type="{{1}}"></button>
   <button class='pdf_wxbtn' wx:if="{{!login}}" style="margin-top: 395rpx;" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type="{{2}}"></button>

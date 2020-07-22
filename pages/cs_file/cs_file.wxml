@@ -1,0 +1,13 @@
+<view class="container">
+
+<view>
+    <scroll-view  scroll-y="true" class="scroll_hotbook" enable-flex="true">
+        <view wx:for="{{image}}" wx:key="hotbook_index" class='hotbook_project' >
+          <image class="open_fm" src="{{item}}"></image>
+        </view> 
+      </scroll-view> 
+  
+    
+    </view>
+
+</view>

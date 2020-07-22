@@ -18,7 +18,7 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    this.clearLocalFile()
+    
     // var url
     var type = options.type
     that.setData({
@@ -28,10 +28,29 @@ Page({
     var params = {
 
     }
+    var image1=[]
+    var image2=[]
+    var image3=[]
     app.ljgk.xcxGetZiliao(params).then(d => {
       if (d.data.status == 1) {
-        that.setData({
-          gkzl: d.data.data
+        for(var i=1;i<=d.data.data.slkqmy.num;i++){
+          var img_d = d.data.data.slkqmy.pre + i + d.data.data.slkqmy.tail
+          image2.push(img_d)
+        }
+        for(var i=1;i<=d.data.data.lkmsbd.num;i++){
+          var img_d = d.data.data.lkmsbd.pre + i + d.data.data.lkmsbd.tail
+          image3.push(img_d)
+        }
+        for(var i=1;i<=d.data.data.xfkqtfjn.num;i++){
+          var img_d = d.data.data.xfkqtfjn.pre + i + d.data.data.xfkqtfjn.tail
+          image1.push(img_d)
+        }
+        console.log(image1)
+        this.setData({
+          gkzl: d.data.data,
+          image1:image1,
+          image2:image2,
+          image3:image3,
         })
         console.log(that.data.gkzl)
       }
@@ -84,9 +103,13 @@ Page({
     })
     var vf = e.currentTarget.dataset.vf
     if(vf == 4){
-      that.open_file(that.data.gkzl.xckqtfjn,vf)
+      wx.redirectTo({
+        url: '/pages/cs_file/cs_file?image=' + that.data.image1,
+      })
     }else if(vf == 5){
-      that.open_file(that.data.gkzl.slkqmy,vf)
+      wx.redirectTo({
+        url: '/pages/cs_file/cs_file?image=' + that.data.image2,
+      })
     }else if(vf == 6){
       if(!wx.getStorageSync('yx')){
         var params = {
@@ -99,13 +122,16 @@ Page({
           }
         })
       }
-      that.open_file(that.data.gkzl.lkmsbd,vf)
+      wx.redirectTo({
+        url: '/pages/cs_file/cs_file?image=' + that.data.image3,
+      })
     }
   },
 
    //打开文档
   open_file:function(url,type){
     let that =this
+    this.clearLocalFile()
     wx.showLoading({
       title: '资料打开中...',
     })
@@ -234,14 +260,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    // this.clearLocalFile()
+   
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    this.clearLocalFile()
+   
   },
 
   /**

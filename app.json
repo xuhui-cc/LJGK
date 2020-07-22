@@ -6,6 +6,8 @@
     "pages/cp/cp",
     "pages/logs/logs",
     "pages/video/video",
+    "pages/web_file/web_file",
+    "pages/cs_file/cs_file",
     "pages/kan_video/kan_video"
   ],
   "window": {
