@@ -496,6 +496,9 @@ Page({
   //打开文档
   open_file:function(url,type){
     let that =this
+    wx.showLoading({
+      title: '资料打开中...',
+    })
     console.log(url,"url")
     var fileName
     

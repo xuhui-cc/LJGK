@@ -106,6 +106,9 @@ Page({
    //打开文档
   open_file:function(url,type){
     let that =this
+    wx.showLoading({
+      title: '资料打开中...',
+    })
     console.log(url,"url")
     var fileName
     
@@ -117,6 +120,8 @@ Page({
     else if(type == 6){
       fileName =  "联考面试宝典.pdf"
     }
+
+    
       that.setData({
         fileName: fileName
       })
@@ -229,7 +234,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    this.clearLocalFile()
+    // this.clearLocalFile()
   },
 
   /**
