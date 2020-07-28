@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/version4_1/version4_1",
     "pages/index/index",
     "pages/two_home/two_home",
     "pages/two_v/two_v",

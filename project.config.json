@@ -22,7 +22,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
@@ -112,6 +112,13 @@
 					"id": -1,
 					"name": "pages/two_home/two_home",
 					"pathName": "pages/two_home/two_home",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/version4_1/version4_1",
+					"pathName": "pages/version4_1/version4_1",
 					"scene": null
 				}
 			]

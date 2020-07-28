@@ -1,0 +1,79 @@
+<view class="container">
+
+  <image class="background_img" src="../../images/background.png" ></image>
+  <image class="v4_1" src="../../images/v4_1.png"></image>
+  <image class="v4_2" src="../../images/v4_2.png"></image>
+
+  <view class="layout1" wx:if="{{login}}"  bindtap="to_detail" bindtap="showModal_num" data-type="{{7}}"></view>
+  <view class="layout1" wx:if="{{login}}" style="margin-top: 515rpx;"  bindtap="showModal_num" data-type="{{1}}"></view>
+  <view class="layout1" wx:if="{{login}}" style="margin-top: 725rpx;"  bindtap="showModal_num" data-type="{{2}}"></view>
+  <view class="layout1" wx:if="{{login}}" style="margin-top: 943rpx;"  bindtap="showModal_num" data-type="{{3}}"></view>
+  <view class="layout1" wx:if="{{login}}" style="margin-top: 1177rpx;"  bindtap="showModal_num" data-type="{{4}}"></view>
+  <view class="layout1" wx:if="{{login}}" style="margin-top: 1392rpx;"  bindtap="showModal_num" data-type="{{5}}"></view>
+  <view class="layout1" wx:if="{{login}}" style="margin-top: 1612rpx;"  bindtap="showModal_num" data-type="{{6}}"></view>
+
+  <button class='pdf_wxbtn' wx:if="{{!login}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type="{{7}}"></button>
+  <button class='pdf_wxbtn' style="margin-top: 515rpx;" wx:if="{{!login}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type="{{1}}"></button>
+  <button class='pdf_wxbtn' style="margin-top: 725rpx;" wx:if="{{!login}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type="{{2}}"></button>
+  <button class='pdf_wxbtn' style="margin-top: 943rpx;" wx:if="{{!login}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type="{{3}}"></button>
+  <button class='pdf_wxbtn' style="margin-top: 1177rpx;" wx:if="{{!login}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type="{{4}}"></button>
+  <button class='pdf_wxbtn' style="margin-top: 1392rpx;" wx:if="{{!login}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type="{{5}}"></button>
+  <button class='pdf_wxbtn' style="margin-top: 1612rpx;" wx:if="{{!login}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type="{{6}}"></button>
+
+
+    <image  class="cp" src="../../images/cp.png" wx:if='{{!cp_sub}}' data-type='{{8}}' bindtap="cp"></image>
+    <button class='cp_wxbtn' wx:if="{{!login}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type='{{8}}'></button>
+
+  <image class="share" src="../../images/share.png"></image>
+  <button class="btn_share" open-type='share'>
+    <image class="ljlogo" src="../../images/lj.png"></image>
+    <view class="share_tip">免费送好友课程</view>
+    <image class="share_btn" src="../../images/share_btn.png"></image>
+    <view class="mss">马上送</view>
+  </button>
+
+
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{mask2}}"></view>
+  <!-- wx:if="{{mask2}}" -->
+<!-- wx:if="{{mask2}}" -->
+  <view class="layout3" catchtouchmove="preventTouchMove" wx:if="{{mask2}}">
+    <image class="mask2" src="../../images/v4_3.png"></image>
+   
+      <image class="ftf" wx:if='{{isftf}}' src="../../images/xz_ftf.png" ></image>
+      <image class="ftf" wx:else='' src="../../images/wxz_ftf.png" bindtap="ftf"></image>
+      <text class="ftf_name" style="{{isftf?'color:rgba(12,193,155,1); ':'color:rgba(188,188,188,1);'}}" bindtap="{{isftf?'; ':'ftf'}}">线上测评</text>
+
+      <image class="ptp" wx:if='{{isptp}}' src="../../images/xz_ptp.png" ></image>
+      <image class="ptp" wx:else='' src="../../images/wxz_ptp.png" bindtap="ftf"></image>
+      <text class="ptp_name" style="{{isptp?'color:rgba(12,193,155,1); ':'color:rgba(188,188,188,1);'}}" bindtap="{{isptp?'; ':'ftf'}}">线下测评</text>
+
+
+      <view class="shu1"></view>
+      <text class="cp1">联系方式</text>
+      <input class="cp1_content" placeholder="请填写联系方式" type='number' bindinput="input_phone">{{phone}}></input>
+      <view class="shu2"></view>
+      <text class="cp2">测评时间</text>
+      
+      <picker class="picker" mode="date" value="{{date}}" start="{{now_date}}" end="{{future_date}}" bindchange="bindDateChange">
+        <view class="cp4_content1">{{date}}</view>
+      </picker>
+      <picker class="picker" mode="date" value="{{date}}" start="{{now_date}}" end="{{future_date}}" bindchange="bindDateChange">
+         <image class="cp4_img1" src="../../images/xsj.png"></image>
+      </picker>
+
+      <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{cptime}}">
+        <view class="cp4_content2">{{cp_time}}</view>
+      </picker>
+       <picker class="picker" bindchange="bindPickerChange" value="{{index}}" range="{{cptime}}">
+        <image class="cp4_img2" src="../../images/xsj.png"></image>
+      </picker>
+
+      <image class="btn_mask2" src="../../images/btn_addr1.png" wx:if='{{!input_mask2}}'></image>
+      <view class="mask2_yes" wx:if='{{!input_mask2}}' >提交</view>
+      <image class="btn_mask2" src="../../images/btn_addr2.png" wx:if='{{input_mask2}}' bindtap="mask2_submit"></image>
+      <view class="mask2_yes" wx:if='{{input_mask2}}' bindtap="mask2_submit">提交</view>
+ 
+    <image class="mask1_del" src="../../images/del.png" bindtap="del_mask" ></image>
+  </view>
+
+</view>
