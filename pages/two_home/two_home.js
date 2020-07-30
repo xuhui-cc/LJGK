@@ -102,17 +102,14 @@ Page({
     var type = e.currentTarget.dataset.type;
     console.log(type + 'type')
     that.setData({
-      type: type
+      type: type,
+      mask2: true
     })
-    if (that.data.mask1_sub) {
-      that.setData({
-        mask2: true
-      })
-    } else {
-      that.setData({
-        mask1: true
-      })
-    }
+    
+      
+   
+    
+    
    
   },
 
@@ -166,6 +163,8 @@ Page({
   onShow: function () {
     this.onLoad()
   },
+
+
   show_mask1:function(e){
     let that = this
     var type = e.currentTarget.dataset.type;
@@ -185,6 +184,8 @@ Page({
     }
     
   },
+
+
   mask1_submit:function(){
     let that = this
 
@@ -266,7 +267,7 @@ Page({
           position: that.data.gw,
           contact: that.data.phone,
           cptime: that.data.date + '  ' + that.data.cp_time,
-          type: type,
+          // type: type,
 
         }
 

@@ -70,7 +70,10 @@ function xcxPushMsg(params) {
   return fetch.ljgkfetch(URI, 'xcxPushMsg', params)
 }
 
+//登录(第四版)
+function xcxjwlogin1(params) {
+  return fetch.ljgkfetch1(URI, 'xcxljgklogin', params, "登录", true, "登录中")
+}
 
 
-
-module.exports = { xcxAddKaochang, xcxGetZiliao, xcxAddAddress, xcxGetCourseInfo, xcxGetCourseInfo1, xcxMyGetyzm, loginRegister, loginregister, xcxkanVideo, xcxsaveStudyRecord, xcxSaveCeping, xcxSaveCode, xcxGetVideoList, xcxGetOpenid, xcxPushMsg,saveYixiang}
+module.exports = { xcxAddKaochang, xcxGetZiliao, xcxAddAddress, xcxGetCourseInfo, xcxGetCourseInfo1, xcxMyGetyzm, loginRegister, loginregister, xcxkanVideo, xcxsaveStudyRecord, xcxSaveCeping, xcxSaveCode, xcxGetVideoList, xcxGetOpenid, xcxPushMsg,saveYixiang,xcxjwlogin1}

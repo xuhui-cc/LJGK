@@ -21,7 +21,7 @@
   <button class='pdf_wxbtn' style="margin-top: 1612rpx;" wx:if="{{!login}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type="{{6}}"></button>
 
 
-    <image  class="cp" src="../../images/cp.png" wx:if='{{!cp_sub}}' data-type='{{8}}' bindtap="cp"></image>
+    <image  class="cp" src="../../images/cp.png" wx:if='{{cp_sub == ""}}' data-type='{{8}}' bindtap="cp"></image>
     <button class='cp_wxbtn' wx:if="{{!login}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-type='{{8}}'></button>
 
   <image class="share" src="../../images/share.png"></image>
