@@ -72,6 +72,13 @@
   width: 720rpx;
   height:1403rpx;
 }
+.lkms{
+  position: absolute;
+  margin-left: 15rpx;
+  margin-top: 420rpx;
+  width: 720rpx;
+  height:308rpx;
+}
 .layout1{
   position: absolute;
   margin-left: 35rpx;
