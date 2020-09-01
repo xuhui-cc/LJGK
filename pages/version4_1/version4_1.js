@@ -40,6 +40,329 @@ Page({
     })
   },
 
+  input_kc: function(e) {
+
+    var regkcid = new RegExp('[0-9]', 'g');
+
+    var iskcid = regkcid.exec(e.detail.value);
+    if (iskcid) {
+      if (e.detail.value.length == 4) {
+        if (e.detail.value >= 1 ){
+          if (101 <= e.detail.value && e.detail.value <= 199) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } else if (201 <= e.detail.value && e.detail.value  <= 299) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (301 <= e.detail.value && e.detail.value  <= 399) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (401 <= e.detail.value && e.detail.value  <= 499) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (501 <= e.detail.value && e.detail.value  <= 599) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (601 <= e.detail.value && e.detail.value  <= 699) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } else if (701 <= e.detail.value && e.detail.value  <= 799) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (801 <= e.detail.value && e.detail.value  <= 899) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (901 <= e.detail.value && e.detail.value  <= 999) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1001 <= e.detail.value && e.detail.value  <= 1099) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1101 <= e.detail.value && e.detail.value  <= 1199) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1201 <= e.detail.value && e.detail.value  <= 1299) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1301 <= e.detail.value && e.detail.value  <= 1399) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1401 <= e.detail.value && e.detail.value  <= 1499) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1501 <= e.detail.value && e.detail.value  <= 1599) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1601 <= e.detail.value && e.detail.value  <= 1699) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1701 <= e.detail.value && e.detail.value  <= 1799) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1801 <= e.detail.value && e.detail.value  <= 1899) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (1901 <= e.detail.value && e.detail.value  <= 1999) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (2001 <= e.detail.value && e.detail.value  <= 2099) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (2101 <= e.detail.value && e.detail.value  <= 2199) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (2201 <= e.detail.value && e.detail.value  <= 2299) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (2301 <= e.detail.value && e.detail.value  <= 2399) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (2401 <= e.detail.value && e.detail.value  <= 2499) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (2501 <= e.detail.value && e.detail.value  <= 2599) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else if (2601 <= e.detail.value && e.detail.value  <= 2699) {
+            this.setData({
+              kcid: e.detail.value,
+              input_kc: true
+            })
+          } 
+          else  {
+            wx.showToast({
+              title: "请输入正确的关键字",
+              icon: 'none',
+              duration: 500
+            })
+            this.setData({
+              input_kc: false
+            })
+          }
+        }else{
+          wx.showToast({
+            title: "请输入正确的关键字",
+            icon: 'none',
+            duration: 500
+          })
+          this.setData({
+            input_kc: false
+          })
+        }
+    }else{
+      wx.showToast({
+        title: "请输入正确的关键字",
+        icon: 'none',
+        duration: 500
+      })
+      this.setData({
+        input_kc: false
+      })
+    }
+    }
+    else {
+      wx.showToast({
+        title: "请输入正确的关键字",
+        icon: 'none',
+        duration: 2000
+      })
+      this.setData({
+        kcid: "",
+        input_kc: false
+      })
+    }
+    console.log(this.data.kcid + 'kcid')
+    
+  },
+
+  //考场提交
+  kc_submit: function() {
+    let that = this
+       this.setData({
+         kc_yes: true
+       })
+       console.log("考场选择" + this.data.kc_yes)
+       wx.setStorageSync('kc_yes', this.data.kc_yes)
+       var uid = wx.getStorageSync("uid")
+         var params = {
+           uid: uid,
+           kcid: this.data.kcid
+         }
+         
+         app.ljgk.xcxAddKaochang(params).then(d => {
+           if (d.data.status == 1) {
+             console.log(d.data.msg +'msg,addkc')
+             console.log('考场号：' + this.data.kcid)
+             if(that.data.type > 3){
+              var params = {}
+              //获取pdf资料
+      
+              var image1=[]
+              var image2=[]
+              var image3=[]
+              var image4=[]
+              app.ljgk.xcxGetZiliao(params).then(d => {
+                if (d.data.status == 1) {
+                  for(var i=1;i<=d.data.data.xfkqtfjn.num;i++){
+                    var img_d = d.data.data.xfkqtfjn.pre + i + d.data.data.xfkqtfjn.tail
+                    image1.push(img_d)
+                  }
+                  for(var i=1;i<=d.data.data.slkqmy.num;i++){
+                    var img_d = d.data.data.slkqmy.pre + i + d.data.data.slkqmy.tail
+                    image2.push(img_d)
+                  }
+                  for(var i=1;i<=d.data.data.lkmsbd.num;i++){
+                    var img_d = d.data.data.lkmsbd.pre + i + d.data.data.lkmsbd.tail
+                    image3.push(img_d)
+                  }
+                  for(var i=1;i<=d.data.data.sydwms.num;i++){
+                    var img_d = d.data.data.sydwms.pre + i + d.data.data.sydwms.tail
+                    image4.push(img_d)
+                  }
+                  // console.log(image1)
+                  this.setData({
+                    gkzl: d.data.data,
+                    image1:image1,
+                    image2:image2,
+                    image3:image3,
+                    image4:image4,
+                  })
+                }
+                if(that.data.type == 4){
+                  wx.navigateTo({
+                    url: '/pages/cs_file/cs_file?image=' + that.data.image1,
+                  })
+                  
+                }else if(that.data.type == 5){
+                  wx.navigateTo({
+                    url: '/pages/cs_file/cs_file?image=' + that.data.image2,
+                  })
+                }else if(that.data.type == 6){
+                  if(!yx){
+                    var params = {
+                      "uid":wx.getStorageSync('uid')
+                    }
+                    app.ljgk.saveYixiang(params).then(d => {
+                      if (d.data.status == 1) {
+                        console.log("意向成功")
+                        wx.setStorageSync('yx', true)
+                      }
+                    })
+                  }
+                  wx.navigateTo({
+                    url: '/pages/cs_file/cs_file?image=' + that.data.image3,
+                  })
+                }else if(that.data.type == 7){
+                  // that.open_file(that.data.gkzl.sydwms,7)
+                  wx.navigateTo({
+                    url: '/pages/cs_file/cs_file?image=' + that.data.image4,
+                  })
+                }
+                
+              })
+            }
+            else {
+              wx.navigateTo({
+                url: '/pages/video/video?type=' + that.data.type,
+              })
+              
+            }
+             
+           }
+           else {
+             console.log('失败')
+           }
+         })
+         
+         
+         this.setData({
+           showModal_num: false
+         })
+       
+       
+     
+   },
+
+   //考场蒙层关闭按钮
+  del_num: function () {
+    this.setData({
+      showModal_num: false
+    })
+  },
+
   ftf:function(){
     let that = this
     that.setData({
@@ -97,7 +420,7 @@ Page({
     that.setData({
       type:type
     })
-    // if (that.data.kc_yes){
+    if (that.data.kc_yes){
       if(type > 3){
         var params = {}
         //获取pdf资料
@@ -172,15 +495,13 @@ Page({
         })
         
       }
-    // }
-    // else{
-    //   this.setData({
-    //     showModal_num: true
-    //   })
-    //   that.setData({
-    //     click:false
-    //   })
-    // }
+    }
+    else{
+      this.setData({
+        showModal_num: true
+      })
+      
+    }
     
   },
 
