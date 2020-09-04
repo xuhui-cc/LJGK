@@ -107,7 +107,7 @@
   width: 278rpx;
   height: 161rpx;
   right: -30rpx;
-  z-index: 200;
+  z-index: 19;
   bottom: 200rpx;
 }
 .cp_wxbtn{
@@ -132,7 +132,7 @@
   top: 0;
   left: 0;
   background: #000;
-  z-index: 1;
+  z-index: 20;
   opacity: 0.64;
 }
 
@@ -142,7 +142,7 @@
   position: fixed;
   margin-left: 37rpx;
   margin-top: 278rpx;
-  z-index: 2;
+  z-index: 21;
 }
 .mask2{
   width: 677rpx;
@@ -434,11 +434,61 @@
   position: absolute;
   margin-left: 32rpx;
   margin-top: 279rpx;
-  z-index: 2;
+  z-index: 21;
 }
 .kc{
   width: 687rpx;
   height: 864rpx;
+}
+.layout2_tip{
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  margin-left: 37rpx;
+  margin-top: 179rpx;
+  z-index: 21;
+}
+.kc_tip{
+  width: 677rpx;
+  height: 1130rpx;
+}
+.content_head{
+  position: absolute;
+  margin-left: 117rpx;
+  margin-top: 207rpx;
+  width: 428rpx;
+height: 93rpx;
+font-size: 32rpx;
+font-family: PingFang SC;
+font-weight: bold;
+line-height: 48rpx;
+text-align: center;
+color: #1DA186;
+opacity: 1;
+
+}
+.content_tip{
+  position: absolute;
+  margin-left: 85rpx;
+  margin-top: 335rpx;
+  width: 523rpx;
+  height: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  line-height: 48rpx;
+  color: #1A1A1A;
+  opacity: 1;
+
+}
+.ikonw{
+  position: absolute;
+  margin-left: 215rpx;
+  margin-top: 1015rpx;
+  width: 250rpx;
+  height: 80rpx;
+  /* background-color: deeppink; */
+  /* z-index: 5; */
 }
 .input_kc{
   position: absolute;

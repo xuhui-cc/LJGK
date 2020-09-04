@@ -91,6 +91,19 @@
     <image class="kc_del" src="../../images/del.png" bindtap="del_num"></image>
   </view>
 
+  <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal_num1}}"></view>
+  <view class="layout2_tip" wx:if="{{showModal_num1}}" >
+    <image class="kc_tip" src="../../images/yip_layout.png" ></image>
+    <view class="content_head">2020年陕西省公务员考试资格复审需准备资料</view>
+    <view class="content_tip">1. 本人准考证复印件；</view>
+    <view class="content_tip" style="margin-top: 407rpx;">2. 本人报名登记表（需签字确认）；</view>
+    <view class="content_tip" style="margin-top: 480rpx;">3. 本人身份证复印件；</view>
+    <view class="content_tip" style="margin-top: 552rpx;">4. 学历证明材料：</view>
+    <view class="content_tip" style="margin-top: 610rpx;">① 学历、学位证书复印件；</view>
+    <view class="content_tip" style="margin-top: 668rpx;">② 学信网、学位网在线学历、学位认证报告。应届毕业生尚未拿到学历学位证书的考生打印学信网的<text style="font-weight: bold;color: #1DA186;">学籍证明</text>（注：留学回国人员须提供教育部留学服务中心认证的国外学历学位认证书和我国驻外使馆的出国留学证明；）</view>
+    <view class="ikonw" bindtap="iknow"></view>
+  </view>
+  
 
 
 </view>

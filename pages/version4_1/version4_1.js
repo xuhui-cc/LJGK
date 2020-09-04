@@ -13,6 +13,7 @@ Page({
     cp_time:"请选择测评时间",
     isftf:true,
     isptp:false,
+    showModal_num1:true
     // cp_sub:false
   },
 
@@ -21,7 +22,9 @@ Page({
    */
   onLoad: function (options) {
     let that = this
-    
+    // that.setData({
+    //   showModal_num1:true
+    // })
     
 
     // var dd = new Date();
@@ -248,6 +251,90 @@ Page({
     
   },
 
+  iknow:function(){
+    let that = this
+       this.setData({
+        iknow: true,
+        showModal_num1:false
+       })
+      //  if(that.data.type > 3){
+      //   var params = {}
+      //   //获取pdf资料
+
+      //   var image1=[]
+      //   var image2=[]
+      //   var image3=[]
+      //   var image4=[]
+      //   app.ljgk.xcxGetZiliao(params).then(d => {
+      //     if (d.data.status == 1) {
+      //       for(var i=1;i<=d.data.data.xfkqtfjn.num;i++){
+      //         var img_d = d.data.data.xfkqtfjn.pre + i + d.data.data.xfkqtfjn.tail
+      //         image1.push(img_d)
+      //       }
+      //       for(var i=1;i<=d.data.data.slkqmy.num;i++){
+      //         var img_d = d.data.data.slkqmy.pre + i + d.data.data.slkqmy.tail
+      //         image2.push(img_d)
+      //       }
+      //       for(var i=1;i<=d.data.data.lkmsbd.num;i++){
+      //         var img_d = d.data.data.lkmsbd.pre + i + d.data.data.lkmsbd.tail
+      //         image3.push(img_d)
+      //       }
+      //       for(var i=1;i<=d.data.data.sydwms.num;i++){
+      //         var img_d = d.data.data.sydwms.pre + i + d.data.data.sydwms.tail
+      //         image4.push(img_d)
+      //       }
+      //       // console.log(image1)
+      //       this.setData({
+      //         gkzl: d.data.data,
+      //         image1:image1,
+      //         image2:image2,
+      //         image3:image3,
+      //         image4:image4,
+      //       })
+      //     }
+      //     if(that.data.type == 4){
+      //       wx.navigateTo({
+      //         url: '/pages/cs_file/cs_file?image=' + that.data.image1,
+      //       })
+            
+      //     }else if(that.data.type == 5){
+      //       wx.navigateTo({
+      //         url: '/pages/cs_file/cs_file?image=' + that.data.image2,
+      //       })
+      //     }else if(that.data.type == 6){
+      //       if(!that.data.yx){
+      //         var params = {
+      //           "uid":wx.getStorageSync('uid')
+      //         }
+      //         app.ljgk.saveYixiang(params).then(d => {
+      //           if (d.data.status == 1) {
+      //             console.log("意向成功")
+      //             wx.setStorageSync('yx', true)
+      //           }
+      //         })
+      //       }
+      //       wx.navigateTo({
+      //         url: '/pages/cs_file/cs_file?image=' + that.data.image3,
+      //       })
+      //     }else if(that.data.type == 7){
+      //       // that.open_file(that.data.gkzl.sydwms,7)
+      //       wx.navigateTo({
+      //         url: '/pages/cs_file/cs_file?image=' + that.data.image4,
+      //       })
+      //     }
+          
+      //   })
+      // }
+      // else {
+      //   wx.navigateTo({
+      //     url: '/pages/video/video?type=' + that.data.type,
+      //   })
+        
+      // }
+      //  console.log("考场选择" + this.data.kc_yes)
+       wx.setStorageSync('iknow', this.data.iknow)
+  },
+
   //考场提交
   kc_submit: function() {
     let that = this
@@ -415,12 +502,16 @@ Page({
     var type = e.currentTarget.dataset.type;
     var yx = wx.getStorageSync('yx')
     console.log(yx)
+    that.setData({
+      yx:yx
+    })
     console.log(type + 'type')
     // var url 
     that.setData({
       type:type
     })
-    if (that.data.kc_yes){
+    // if (that.data.kc_yes){
+    if (that.data.iknow){
       if(type > 3){
         var params = {}
         //获取pdf资料
@@ -498,7 +589,7 @@ Page({
     }
     else{
       this.setData({
-        showModal_num: true
+        showModal_num1: true
       })
       
     }
@@ -530,7 +621,7 @@ Page({
       that.setData({
         mask2: false
       })
-      that.onLoad()
+      // that.onLoad()
     
     
   },
